@@ -14,7 +14,7 @@
   </div>
   <div class='registration_container'>
     <div class='registration_form'>
-      <input type='button' id='registration_close' class='registration_close' />
+      <input type='button' id='registration_close' class='registration_close' value='Close' />
       <%= form_for(@user) do |f| %>
       <%= f.text_field :fio, :placeholder => 'name', :class => 'registration_fio' %>
       <%= f.text_field :email, :placeholder => 'e-mail', :class => 'registration_email' %>
@@ -35,6 +35,7 @@
       <%= form_for(:user, :url => recovery_path, :method => :get) do |f| %>
       <%= f.text_field :email, :placeholder => 'e-mail' %>
       <%= f.submit 'Recovery' %>
+      <input type='button' id='recovery_close' class='recovery_close' value='Close' />
       <% end %>
     <div>
   </div>
