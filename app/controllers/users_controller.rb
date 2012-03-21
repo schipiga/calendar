@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  layout 'cabinet', :only => [:show]
+
   before_filter :authenticate, :only => [:show, :edit, :update]
   before_filter :correct_user, :only => [:show, :edit, :update]
 

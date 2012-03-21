@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= yield :head %></title>
+  <%= stylesheet_link_tag :index %>
+  <%= javascript_include_tag :jquery, :form, :index %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<%= yield %>
+</body>
+</html>
