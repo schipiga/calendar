@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  description: MyString
+  point_date: 2012-03-07
+  is_share: false
+  cycle: MyString
+  user_id: 1
+
+two:
+  title: MyString
+  description: MyString
+  point_date: 2012-03-07
+  is_share: false
+  cycle: MyString
+  user_id: 1

@@ -1,0 +1,140 @@
+$(document).ready(function(){
+  setUp();
+
+//********* Page **********************
+
+  $('#year').click(function(){
+    calendar();
+  });
+
+  $('#month').click(function(){
+    calendar();
+  });
+
+  $('.active_cell').live('click', function(){
+    var cur_date = document.getElementById('year').value + '-' + 
+                    (document.getElementById('month').selectedIndex + 1) +
+                    '-' + $(this).html();
+    $('.events_list').css('display', 'block');
+    $('#cur_date').val(cur_date);
+    update_events_list();
+  });
+
+  $('#my_events').click(function(){
+    $.get(
+      '/my_events',
+      function(data){
+        $('#all_events_list_content').html('');
+        $('#all_events_list_content').append(data);
+      },
+      'html'
+    );
+    $('.all_events_list_title').html('My events');
+    $('.all_events_list').css('display', 'block');
+  });
+
+  $('#all_events').click(function(){
+    $.get(
+      '/share',
+      function(data){
+        $('#all_events_list_content').html('');
+        $('#all_events_list_content').append(data);
+      },
+     'html'
+    );
+    $('.all_events_list_title').html('All events');
+    $('.all_events_list').css('display', 'block');
+  });
+
+//********* All events list form ******
+
+  $('#all_events_list_close').click(function(){
+    $('.all_events_list').css('display', 'none');
+  });
+
+//********* Events list form **********
+
+  $('#events_list_add').live('click', function(){
+    $('.event').css('display', 'block');
+    $.get(
+      $(this).attr('tag'),
+      function(data){
+        $('.event_form').html('');
+        $('.event_form').append(data);
+        if ($('.event_div_cycle > input[type="radio"]').is(':checked')){
+          $('#event_is_cycle').attr('checked','');
+        }else{
+          $('.event_div_cycle > input[type="radio"]').attr('disabled','');
+        }
+        $('#event_point_date').val($('#cur_date').val());
+      },
+      'html'
+    );
+  });
+
+  $('#events_list_close').click(function(){
+    $('.events_list').css('display', 'none');
+  });
+
+  $('.events_list_del').live('click', function(){
+    $.post(
+      $(this).attr('tag'),
+      {_method:'delete', authenticity_token:$('#authenticity_token').val()},
+      function(){
+        update_events_list()
+      }
+    );
+  });
+
+  $('.events_list_title').live('click', function(){
+    $('.event').css('display', 'block');
+    $.get(
+      $(this).attr('tag'),
+      function(data){
+        $('.event_form').html('');
+        $('.event_form').append(data);
+        if ($('.event_div_cycle > input[type="radio"]').is(':checked')){
+          $('#event_is_cycle').attr('checked','');
+        }else{
+          $('.event_div_cycle > input[type="radio"]').attr('disabled','');
+        }
+      },
+      'html'
+    );
+  });
+
+//********* Event form ****************
+
+  $('.event_close').live('click', function(){
+    $('.event').css('display', 'none');
+  });
+
+  $('#event_is_cycle').live('change', function(){
+    if ($(this).is(':checked')){
+      $('.event_cycle').removeAttr('disabled');
+    }else{
+      $('.event_cycle').attr('disabled', '');
+    }
+  });
+
+  $('#event_submit').live('click', function(){
+    $('#event_form').ajaxForm(function(){
+      update_events_list();  
+    });
+    $('.event').css('display', 'none');
+  });
+
+});
+//********* Non-events functions ******
+
+function update_events_list(){
+  $.get(
+    '/day_events',
+    {date:$('#cur_date').val()},
+    function(data){
+      $('#events_list_content').html('');
+      $('#events_list_content').append(data);
+    },
+    'html'
+  );
+}

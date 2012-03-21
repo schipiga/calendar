@@ -1,0 +1,67 @@
+<!-- Hidden field for current date -->
+<input type='hidden' id='cur_date' />
+
+<!-- Page -->
+<div class='content'>
+  <div class='left_column'>
+    <div class='profile'>
+      <%= form_for(@user) do |f| %>
+        <%= f.text_field :fio, :class => 'profile_element' %>
+        <%= f.text_field :email, :class => 'profile_element' %>
+        <%= f.password_field :password, :class => 'profile_element' %>
+        <%= f.password_field :password_confirmation, :class => 'profile_element' %>
+        <%= f.submit 'Update', :class => 'profile_element' %>
+      <% end %>
+    </div>
+  </div>
+  <div class='middle_column'>
+    <input type='button' id='my_events' value='My events' />
+    <input type='button' id='all_events' value='All events' />
+    <div id='calendar' class='calendar'></div>
+  </div>
+  <div class='right_column'>
+    <%= link_to 'Sign out', session_path, :method => :delete %>
+  </div>
+</div>
+
+<!-- Events list -->
+<div class='events_list'>
+  <div class='events_list_back'>
+  </div>
+  <div class='events_list_container'>
+    <div class='events_list_form'>
+      <div class='events_list_header'>
+        <input type='button' id='events_list_add' class='events_list_add' tag='<%= new_user_event_path(@user) %>' value='Add event' />
+        <input type='button' id='events_list_close' class='events_list_close' value='Close' />
+      </div>
+      <div id='events_list_content' class='events_list_content'>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- My/all events list -->
+<div class='all_events_list'>
+  <div class='events_list_back'>
+  </div>
+  <div class='events_list_container'>
+    <div class='events_list_form'>
+      <div class='events_list_header'>
+        <div class='all_events_list_title'>Title</div>
+        <input type='button' id='all_events_list_close' class='events_list_close' value='Close' />
+      </div>
+      <div id='all_events_list_content' class='events_list_content'>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Event -->
+<div class='event'>
+  <div class='event_back'>
+  </div>
+  <div class='event_container'>
+    <div class='event_form'>
+    </div>
+  </div>
+</div>

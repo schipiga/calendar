@@ -1,0 +1,37 @@
+<!-- Authorization -->
+<div class='main'>
+  <%= render 'form_session' %>
+</div>
+
+<!-- Registration -->
+<div class='registration'>
+  <div class='registration_back'>
+  </div>
+  <div class='registration_container'>
+    <div class='registration_form'>
+      <input type='button' id='registration_close' class='registration_close' />
+      <%= form_for(@user) do |f| %>
+      <%= f.text_field :fio, :placeholder => 'name', :class => 'registration_fio' %>
+      <%= f.text_field :email, :placeholder => 'e-mail', :class => 'registration_email' %>
+      <%= f.password_field :password, :placeholder => 'password', :class => 'registration_pswd' %>
+      <%= f.password_field :password_confirmation, :placeholder => 'confirm password', :class => 'registration_confirm' %>
+      <%= f.submit 'Sign up', :class => 'registration_sign_up' %>
+      <% end %>
+   </div>
+  </div>
+</div>
+
+<!-- Recovery -->
+<div class='recovery'>
+  <div class='recovery_back'>
+  </div>
+  <div class='recovery_container'>
+    <div class='recovery_form'>
+      <%= form_for(:user, :url => recovery_path, :method => :get) do |f| %>
+      <%= f.text_field :email, :placeholder => 'e-mail' %>
+      <%= f.submit 'Recovery' %>
+      <% end %>
+    <div>
+  </div>
+</div>
+

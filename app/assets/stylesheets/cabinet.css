@@ -1,0 +1,198 @@
+/* Page */
+
+.content {
+  width: 1024px;
+  margin: auto;
+  padding: auto;
+  margin-top: 50px;
+}
+
+.left_column {
+  width: 300px;
+  float: left;
+}
+
+.middle_column {
+  display: inline-block;
+  width: 630px;
+}
+
+.right_column {
+  display: inline-block;
+  width: 84px;
+  height: 100px;
+  float: right;
+}
+
+.profile {
+  width: 270px;
+  margin: auto;
+  padding: auto;
+  margin-top: 200px;
+}
+
+.profile_element {
+  width: 270px;
+  margin-bottom: 15px;
+}
+
+.calendar {
+  float: left;
+  margin: auto;
+  padding: auto;
+  width: 625px;
+}
+
+/* All events list form */
+
+.all_events_list {
+  display: none;
+}
+
+/* Events list form */
+
+.events_list {
+  display: none;
+}
+
+.events_list_back {
+  position: fixed;
+  background: black;
+  opacity: 0.7;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 101;
+}
+
+.events_list_container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 102;
+}
+
+.events_list_form {
+  background: white;
+  margin: auto;
+  padding: 25px;
+  margin-top: 50px;
+  width: 600px;
+  height: 550px;
+}
+
+.events_list_header {
+  width: 100%;
+}
+
+.events_list_close {
+  float: right;
+}
+
+.events_list_content {
+  width: 100%;
+}
+
+.events_list_unit {
+  margin-top: 10px;
+}
+
+.events_list_title {
+  cursor: pointer;
+}
+
+.events_list_del {
+  cursor: pointer;
+  float: right;
+}
+
+/* Event form */
+
+.event {
+  display: none;
+}
+
+.event_back {
+  position: fixed;
+  background: black;
+  opacity: 0.7;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 301;
+}
+
+.event_container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 302;
+}
+
+.event_form {
+  background: white;
+  margin: auto;
+  padding: 25px;
+  margin-top: 100px;
+  width: 650px;
+  height: 500px;
+}
+
+.event_header {
+  width: 100%;
+}
+
+.event_close {
+  float: right;
+}
+
+.event_description {
+  width: 100%;
+}
+
+.event_point_date {
+  width: 100%;
+}
+
+.event_is_share {
+  width: 100%;
+}
+
+.event_is_cycle {
+  width: 100%;
+}
+
+.event_div_cycle {
+  width: 100%;
+}
+
+/* Calendar */
+
+table {
+  border-spacing: 0;
+}
+
+.active_cell {
+  background: yellow;
+  width: 85px;
+  height: 70px;
+  cursor: pointer;
+  border: 1px solid black;
+}
+
+.inactive_cell {
+  background: gray;
+  width: 85px;
+  height: 70px;
+  border: 1px solid black;
+}
+
+.today {
+  background: red;
+}
