@@ -46,6 +46,11 @@ $(document).ready(function(){
     $('.all_events_list').css('display', 'block');
   });
 
+  $('#user_submit').live('click',function(){
+    $('#u_form').ajaxForm(function(){
+    });
+  });
+
 //********* All events list form ******
 
   $('#all_events_list_close').click(function(){

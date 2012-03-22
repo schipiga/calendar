@@ -30,6 +30,11 @@ $(document).ready(function(){
     $('.registration').css('display', 'none');
   });
 
+  $('#user_submit').live('click', function(){
+    $('#u_form').ajaxForm(function(){
+    });
+  });
+
 //********* Recovery ******************
 
   $('#recovery_close').click(function(){
