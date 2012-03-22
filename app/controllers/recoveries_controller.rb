@@ -21,6 +21,7 @@ class RecoveriesController < ApplicationController
       Recovery.deleteall(['user_id = ?', user[:id]])
       @rec = Recovery.new(rec_key(user[:email]), user[:id])
       @res.save
+      UserMailer.recovery_pswd(user).deliver
     end
   end
 
