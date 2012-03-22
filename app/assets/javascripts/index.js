@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-  $('#sign_up').click(function(){
+  $('#main_sign_up').click(function(){
     $.get(
       '/users/new.js',
       function(data){
@@ -12,7 +12,7 @@ $(document).ready(function(){
     $('.registration').css('display', 'block');
   });
 
-  $('#recovery_pswd').click(function(){
+  $('#main_recovery_pswd').click(function(){
     $.get(
       '/recoveries/new.js',
       function(data){

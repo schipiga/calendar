@@ -40,7 +40,7 @@ class EventsController < ApplicationController
   end
 
   def show_share
-    @event = Event.where('id = ? AND is_share = ?', params[:id], true)
+    @event = Event.where('id = ? AND is_share = ?', params[:id], true)[0]
     respond_to do |format|
       format.js {render 'show'}
     end

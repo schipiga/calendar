@@ -1,3 +1,12 @@
-<% @event.each do |e| %>
-  <%= e.title %>
-<% end %>
+<div class='show_event_title'>
+  <%= @event.title %>
+</div>
+<div class='show_event_description'>
+  <%= @event.description %>
+</div>
+<div class='show_event_point_date'>
+  <%= @event.point_date %>
+</div>
+<div class='show_event_cycle'>
+  <%= @event.cycle %>
+</div>

@@ -1,7 +1,7 @@
 <%= form_for(@user) do |f| %>
-  <%= f.text_field :fio, :class => 'profile_element' %>
-  <%= f.text_field :email, :class => 'profile_element' %>
-  <%= f.password_field :password, :class => 'profile_element' %>
-  <%= f.password_field :password_confirmation, :class => 'profile_element' %>
-  <%= f.submit 'Save', :class => 'profile_element' %>
+  <%= f.text_field :fio, :placeholder => 'Name Surname', :class => 'user_field' %>
+  <%= f.text_field :email, :placeholder => 'e-mail', :class => 'user_field' %>
+  <%= f.password_field :password, :placeholder => 'password', :class => 'user_field' %>
+  <%= f.password_field :password_confirmation, :placeholder => 'confirm password', :class => 'user_field' %>
+  <%= f.submit 'Save', :class => 'user_submit' %>
 <% end %>

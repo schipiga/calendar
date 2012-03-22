@@ -8,15 +8,20 @@ Calendar::Application.routes.draw do
         get 'day_events'
         get 'month_events'
         get 'user_events'
-        get 'share'
+        get 'share_events'
+      end
+      member do
+        get 'show_share'
+        get 'show_my'
       end
     end
   end
+
   root :to => 'sessions#new'
   match '/day_events' => 'events#day_events'
   match '/month_events' => 'events#month_events'
   match '/my_events' => 'events#user_events'
-  match '/share' => 'events#share'
+  match '/share_events' => 'events#share_events'
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

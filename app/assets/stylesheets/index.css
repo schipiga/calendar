@@ -6,30 +6,69 @@ body {
   font-size: 16px;
 }
 
+input {
+  font-family: inherit;
+  font-size: inherit;
+  border: 1px solid black;
+  padding: 3px;
+  border-radius: 3px;
+}
+
+input[type='text'], input[type='password'] {
+  width: 300px;
+}
+
+input[type='button'], input[type='submit'] {
+  background: url(/assets/btn.png);
+  width: 100px;
+}
+
+input[type='button']:hover, input[type='submit']:hover {
+  background: url(/assets/btn_over.png);
+}
+
+input[type='button']:active, input[type='submit']:active {
+  background: url(/assets/btn_clk.png);
+}
+
+.btn_close {
+  background: url(/assets/del.png);
+  width: 20px;
+  height: 20px;
+  border: 1px solid black;
+  border-radius: 3px; 
+}
+
+.btn_close:hover {
+  background: url(/assets/del_over.png);
+}
+
+.btn_close:active {
+  background: url(/assets/del_clk.png);
+}
+
 /* Authorization form */
 
 .main {
   margin: auto;
-  margin-top: 50px;
   padding: 25px;
   background: white;
-  width: 550px;
-  height: 500px;
+  width: 420px;
+  height: 300px;
 }
 
-.main_text_fields {
+.main_first_row {
   margin-top: 200px;
   width: 100%;
 }
 
-.main_password {
+.main_sign_in {
   float: right;
 }
 
-.main_buttons {
-  margin: auto;
-  margin-top: 5px;
-  width: 30%;
+.main_second_row {
+  margin-top: 10px;
+  width: 100%;
 }
 
 .main_sign_up {
@@ -41,6 +80,11 @@ body {
   width: 100%;
   text-align: right;
   cursor: pointer;
+  color: #616161;
+}
+
+.main_recovery_pswd:hover {
+  color: black;
 }
 
 /* Registration form */
@@ -73,12 +117,29 @@ body {
   margin: auto;
   padding: 25px;
   background: white;
-  width: 450px;
-  height: 500px;
+  width: 306px;
+  height: 210px;
+}
+
+.registration_header {
+  width: 100%;
+}
+
+.registration_close {
+  float: right;
 }
 
 .registration_content {
   width: 100%;
+}
+
+.user_field {
+  margin-top: 10px;
+}
+
+.user_submit {
+  float: right;
+  margin-top: 10px;
 }
 
 /* Recovery password form */
@@ -110,7 +171,28 @@ body {
 .recovery_form {
   background: white;
   margin: auto;
-  padding: 25;
-  width: 300px;
-  height: 200px;
+  padding: 25px;
+  width: 306px;
+  height: 100px;
+}
+
+.recovery_header {
+  width: 100%;
+}
+
+.recovery_close {
+  float: right;
+}
+
+.recovery_content {
+  width: 100%;
+}
+
+.recovery_email {
+  margin-top: 10px;
+}
+
+.recovery_submit {
+  margin-top: 10px;
+  float: right;
 }

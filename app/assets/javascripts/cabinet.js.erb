@@ -35,7 +35,7 @@ $(document).ready(function(){
 
   $('#all_events').click(function(){
     $.get(
-      '/share',
+      '/share_events',
       function(data){
         $('#all_events_list_content').html('');
         $('#all_events_list_content').append(data);
@@ -50,6 +50,18 @@ $(document).ready(function(){
 
   $('#all_events_list_close').click(function(){
     $('.all_events_list').css('display', 'none');
+  });
+  
+  $('.all_events_title').live('click', function(){
+    $.get(
+      $(this).attr('tag'),
+      function(data){
+        $('.show_event_content').html('');
+        $('.show_event_content').append(data);
+      },
+      'html'
+    );
+    $('.show_event').css('display', 'block');
   });
 
 //********* Events list form **********
@@ -118,6 +130,12 @@ $(document).ready(function(){
       update_events_list();  
     });
     $('.event').css('display', 'none');
+  });
+
+//********* Show event form ***********
+
+  $('#show_event_close').live('click', function(){
+    $('.show_event').css('display', 'none');
   });
 
 });
