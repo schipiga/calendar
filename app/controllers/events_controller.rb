@@ -5,13 +5,13 @@ class EventsController < ApplicationController
   before_filter :authenticate
 
   def new
-    @event = current_user.events.build
+    @event = current_user.events.new
     respond_to do |format|
       format.js
     end
   end  
     
-  def share
+  def share_events
     @events = Event.where('is_share = ?', true)
     respond_to do |format|
       format.js
@@ -39,7 +39,21 @@ class EventsController < ApplicationController
     end
   end
 
-  def show
+  def show_share
+    @event = Event.where('id = ? AND is_share = ?', params[:id], true)
+    respond_to do |format|
+      format.js {render 'show'}
+    end
+  end
+
+  def show_my
+    @event = current_user.events.find(params[:id])
+    respond_to do |format|
+      format.js {render 'show'}
+    end
+  end
+
+  def edit
     @event = current_user.events.find(params[:id])
     respond_to do |format|
       format.js
@@ -48,26 +62,22 @@ class EventsController < ApplicationController
 
   def create
     @event = current_user.events.new(params[:event])
-    res = {'ok' => ':)'}
-    respond_to do |format|
-      if @event.save
-        format.json { render json: res }
-      end
+    if @event.save
+      render :nothing => true
     end
   end
 
   def update
     @event = current_user.events.find(params[:id])
-    @event.update_attributes(params[:event])
+    if @event.update_attributes(params[:event])
+      render :nothing => true
+    end
   end
 
   def destroy
     @event = current_user.events.find(params[:id])
-    res = {'ok' => ';)'}
-    respond_to do |format|
-      if @event.destroy
-        format.json { render json: res }
-      end
+    if @event.destroy
+      render :nothing => true
     end
   end
 end

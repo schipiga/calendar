@@ -1,0 +1,5 @@
+<%= form_for(:recovery, :url => recoveries_path) do |f| %>
+  <%= f.text_field :email, :placeholder => 'e-mail' %>
+  <%= f.submit 'Recovery' %>
+<% end %>
+

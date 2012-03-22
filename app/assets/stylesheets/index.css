@@ -77,6 +77,10 @@ body {
   height: 500px;
 }
 
+.registration_content {
+  width: 100%;
+}
+
 /* Recovery password form */
 
 .recovery {
@@ -104,6 +108,7 @@ body {
 }
 
 .recovery_form {
+  background: white;
   margin: auto;
   padding: 25;
   width: 300px;

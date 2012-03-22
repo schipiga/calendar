@@ -1,11 +1,11 @@
 <%= form_for :session, :url => sessions_path do |f| %>
   <div class='main_text_fields'>
-  <%= f.text_field :email, :placeholder => 'e-mail', :class => 'main_email' %>
-  <%= f.password_field :password, :placeholder => 'password', :class => 'main_password' %>
+    <%= f.text_field :email, :placeholder => 'e-mail', :class => 'main_email' %>
+    <%= f.password_field :password, :placeholder => 'password', :class => 'main_password' %>
   </div>
   <div class='main_buttons'>
-  <%= f.submit 'Sign in', :class => 'main_sign_in' %>
-  <input type='button' value='Sign up' class='main_sign_up' id='sign_up'>
+    <%= f.submit 'Sign in', :class => 'main_sign_in' %>
+    <input type='button' value='Sign up' class='main_sign_up' id='sign_up'>
   </div>
 <% end %>
 <div class='main_recovery_pswd' id='recovery_pswd'>Recovery password</div>

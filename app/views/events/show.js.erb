@@ -1,1 +1,3 @@
-<%= render 'form_event' %>
+<% @event.each do |e| %>
+  <%= e.title %>
+<% end %>

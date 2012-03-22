@@ -61,11 +61,6 @@ $(document).ready(function(){
       function(data){
         $('.event_form').html('');
         $('.event_form').append(data);
-        if ($('.event_div_cycle > input[type="radio"]').is(':checked')){
-          $('#event_is_cycle').attr('checked','');
-        }else{
-          $('.event_div_cycle > input[type="radio"]').attr('disabled','');
-        }
         $('#event_point_date').val($('#cur_date').val());
       },
       'html'
@@ -95,6 +90,7 @@ $(document).ready(function(){
         $('.event_form').append(data);
         if ($('.event_div_cycle > input[type="radio"]').is(':checked')){
           $('#event_is_cycle').attr('checked','');
+          $('.event_div_cycle > input[type="radio"]').removeAttr('disabled');
         }else{
           $('.event_div_cycle > input[type="radio"]').attr('disabled','');
         }
@@ -118,7 +114,7 @@ $(document).ready(function(){
   });
 
   $('#event_submit').live('click', function(){
-    $('#event_form').ajaxForm(function(){
+    $('#e_form').ajaxForm(function(){
       update_events_list();  
     });
     $('.event').css('display', 'none');

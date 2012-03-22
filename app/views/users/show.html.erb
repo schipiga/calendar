@@ -9,13 +9,7 @@
 <div class='content'>
   <div class='left_column'>
     <div class='profile'>
-      <%= form_for(@user) do |f| %>
-        <%= f.text_field :fio, :class => 'profile_element' %>
-        <%= f.text_field :email, :class => 'profile_element' %>
-        <%= f.password_field :password, :class => 'profile_element' %>
-        <%= f.password_field :password_confirmation, :class => 'profile_element' %>
-        <%= f.submit 'Update', :class => 'profile_element' %>
-      <% end %>
+      <%= render 'form_user' %>
     </div>
   </div>
   <div class='middle_column'>
@@ -35,7 +29,7 @@
   <div class='events_list_container'>
     <div class='events_list_form'>
       <div class='events_list_header'>
-        <input type='button' id='events_list_add' class='events_list_add' tag='<%= new_user_event_path(@user) %>' value='Add event' />
+        <input type='button' id='events_list_add' class='events_list_add' tag='<%= new_user_event_path(@user) + '.js' %>' value='Add event' />
         <input type='button' id='events_list_close' class='events_list_close' value='Close' />
       </div>
       <div id='events_list_content' class='events_list_content'>

@@ -4,7 +4,7 @@
   <% end %>
   <% @events.each do |e| %>
     <div class='events_list_unit'>
-      <span class='events_list_title' tag='<%= user_event_path(current_user, e['id']) %>'><%= e['title'] %></span>
+      <span class='events_list_title' tag='<%= edit_user_event_path(current_user, e['id']) + '.js' %>'><%= e['title'] %></span>
       <span class='events_list_del' tag='<%= user_event_path(current_user, e['id']) %>'>Del</span>
     </div>
   <% end %>
