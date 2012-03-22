@@ -11,9 +11,9 @@ Calendar::Application.routes.draw do
       end
     end
   end
+  resources :recoveries, :only => ['index', 'new', 'create', 'destroy']
 
   root :to => 'sessions#new'
-  match '/recovery' => 'users#recovery'
   match '/day_events' => 'events#day_events'
   match '/month_events' => 'events#month_events'
   match '/my_events' => 'events#user_events'

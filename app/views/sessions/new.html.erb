@@ -32,7 +32,7 @@
   </div>
   <div class='recovery_container'>
     <div class='recovery_form'>
-      <%= form_for(:user, :url => recovery_path, :method => :get) do |f| %>
+      <%= form_for(:recovery, :url => recoveries_path) do |f| %>
       <%= f.text_field :email, :placeholder => 'e-mail' %>
       <%= f.submit 'Recovery' %>
       <input type='button' id='recovery_close' class='recovery_close' value='Close' />

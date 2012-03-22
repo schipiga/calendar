@@ -20,10 +20,6 @@ class UsersController < ApplicationController
     @user.update_attributes(params[:user])
   end
   
-  def recovery
-
-  end
-
   def show
     @user = User.find(params[:id])
   end

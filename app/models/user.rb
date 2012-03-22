@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   attr_accessible :fio, :email, :password, :password_confirmation
  
   has_many :events
+  has_one :recovery
    
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
