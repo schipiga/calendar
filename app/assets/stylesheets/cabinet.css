@@ -14,8 +14,8 @@ input, select {
   border-radius: 3px;
 }
 
-input[type='text'], input[type='password'] {
-  width: 200px;
+input[type='checkbox'], input[type='radio'] {
+  width: 20px;
 }
 
 input[type='button'], input[type='submit'], select {
@@ -52,7 +52,7 @@ input[type='button']:active, input[type='submit']:active, select:active {
 .content {
   width: 860px;
   margin: auto;
-  padding: auto;
+  padding: 0;
   margin-top: 50px;
 }
 
@@ -86,6 +86,10 @@ input[type='button']:active, input[type='submit']:active, select:active {
   margin-right: 13px;
 }
 
+.user_field {
+  width: 200px;
+}
+
 .event_buttons {
   width: 100%;
   text-align: right;
@@ -97,13 +101,6 @@ input[type='button']:active, input[type='submit']:active, select:active {
 
 #all_events {
   margin-right: 13px;
-}
-
-.calendar {
-  float: left;
-  margin: auto;
-  padding: auto;
-  width: 600px;
 }
 
 .calendar_header {
@@ -118,11 +115,41 @@ input[type='button']:active, input[type='submit']:active, select:active {
 
 /* All events list form */
 
-.all_events_list {
+.all_events {
   display: none;
 }
 
+.all_events_form {
+  background: white;
+  margin: auto;
+  margin-top: 50px;
+  padding: 25px;
+  width: 350px;
+  height: 400px;
+  border: 1px solid black;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  box-shadow: 0 0 20px gray;
+  -moz-box-shadow: 0 0 20px gray;
+  -webkit-box-shadow: 0 0 20px gray;
+}
+
+
+.all_events_header {
+  width: 100%;
+}
+
+.all_events_close {
+  float: right;
+}
+
+.all_events_content {
+  width: 100%;  
+}
+
 .all_events_title {
+  margin-top: 10px;
   cursor: pointer;
 }
 
@@ -155,11 +182,19 @@ input[type='button']:active, input[type='submit']:active, select:active {
 .events_list_form {
   background: white;
   margin: auto;
-  padding: 25px;
   margin-top: 50px;
-  width: 600px;
-  height: 550px;
+  padding: 25px;
+  width: 350px;
+  height: 400px;
+  border: 1px solid black;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  box-shadow: 0 0 20px gray;
+  -moz-box-shadow: 0 0 20px gray;
+  -webkit-box-shadow: 0 0 20px gray;
 }
+
 
 .events_list_header {
   width: 100%;
@@ -178,6 +213,7 @@ input[type='button']:active, input[type='submit']:active, select:active {
 }
 
 .events_list_title {
+  overflow: hidden;
   cursor: pointer;
 }
 
@@ -215,14 +251,26 @@ input[type='button']:active, input[type='submit']:active, select:active {
 .event_form {
   background: white;
   margin: auto;
+  margin-top: 50px;
   padding: 25px;
-  margin-top: 100px;
-  width: 650px;
-  height: 500px;
+  width: 400px;
+  height: 460px;
+  border: 1px solid black;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  box-shadow: 0 0 20px gray;
+  -moz-box-shadow: 0 0 20px gray;
+  -webkit-box-shadow: 0 0 20px gray;
 }
+
 
 .event_header {
   width: 100%;
+}
+
+.event_title {
+  width: 300px;
 }
 
 .event_close {
@@ -230,23 +278,43 @@ input[type='button']:active, input[type='submit']:active, select:active {
 }
 
 .event_description {
+  resize: none;
+  width: 99%;
+  height: 250px;
+  margin-top: 7px;
+  border-radius: 3px;
+  font-size: inherit;
+}
+
+.event_div_point_date {
   width: 100%;
+  margin-top: 5px;
 }
 
 .event_point_date {
-  width: 100%;
+  width: 100px;
 }
 
 .event_is_share {
   width: 100%;
+  margin-top: 15px;
 }
 
 .event_is_cycle {
   width: 100%;
+  margin-top: 15px;
 }
 
 .event_div_cycle {
   width: 100%;
+  margin-top: 5px;
+  padding-left: 20px;
+  font-size: 14px;
+}
+
+.event_submit {
+  float: right;
+  margin-top: 20px;
 }
 
 /* Show event */
@@ -278,10 +346,19 @@ input[type='button']:active, input[type='submit']:active, select:active {
 .show_event_form {
   background: white;
   margin: auto;
+  margin-top: 50px;
   padding: 25px;
-  width: 350px;
-  height: 400px;
+  width: 400px;
+  height: 300px;
+  border: 1px solid black;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  box-shadow: 0 0 20px gray;
+  -moz-box-shadow: 0 0 20px gray;
+  -webkit-box-shadow: 0 0 20px gray;
 }
+
 
 .show_event_header {
   width: 100%;
@@ -292,8 +369,25 @@ input[type='button']:active, input[type='submit']:active, select:active {
 }
 
 .show_event_description {
-  width: 100%;
+  width: 97%;
+  height: 200px;
+  margin-top: 10px;
+  padding: 5px;
+  border: 1px solid gray;
+  border-radius: 3px;
+  color: gray;
 }
+
+.show_event_point_date {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.show_event_cycle {
+  width: 100%;
+  margin-top: 10px;
+}
+
 /* Calendar */
 
 th {

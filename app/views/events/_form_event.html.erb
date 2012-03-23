@@ -1,14 +1,14 @@
 <%= form_for [current_user, @event], :html => {:id => 'e_form'} do |f| %>
-  <div class='new_event_div_title'>
-    <%= f.text_field :title, :placeholder => 'Title', :class => 'new_event_title' %>
-    <input type='button' id='event_close' class='event_close' value='Close' />
+  <div class='event_header'>
+    <%= f.text_field :title, :placeholder => 'Title', :class => 'event_title' %>
+    <div id='event_close' class='event_close btn_close'></div>
   </div>
-  <%= f.text_area :description, :placeholder => 'Description', :class => 'event_description' %>
+  <%= f.text_area :description, :placeholder => 'Description', :class => 'event_description', :maxlength => 500 %>
   <div class='event_div_point_date'>
-    <%= f.text_field :point_date, :id => 'event_point_date' %>
+    <%= f.text_field :point_date, :id => 'event_point_date', :class => 'event_point_date' %>
   </div>
   <div class='event_div_is_share'>
-    <%= f.check_box :is_share, :id => 'event_is_share', :class => 'event_is_share' %>Available for public viewing?
+    <%= f.check_box :is_share, :id => 'event_is_share', :class => 'event_is_share' %>Available for public view?
   </div>
   <div class='event_div_is_cycle'>
     <%= f.check_box :is_cycle, :id => 'event_is_cycle', :class => 'event_is_cycle' %>Repeat event?
@@ -19,5 +19,5 @@
     <%= f.radio_button :cycle, 'monthly', :class => 'event_cycle', :disabled => '' %>Monthly
     <%= f.radio_button :cycle, 'yearly', :class => 'event_cycle', :disabled => '' %>Yearly
   </div>
-  <%= f.submit 'Save', :id => 'event_submit' %>
+  <%= f.submit 'Save', :id => 'event_submit', :class => 'event_submit' %>
 <% end %>

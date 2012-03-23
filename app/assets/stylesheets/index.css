@@ -50,11 +50,19 @@ input[type='button']:active, input[type='submit']:active {
 /* Authorization form */
 
 .main {
-  margin: auto;
-  padding: 25px;
   background: white;
+  margin: auto;
+  margin-top: 50px;
+  padding: 25px;
   width: 420px;
   height: 300px;
+  border: 1px solid black;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  box-shadow: 0 0 20px gray;
+  -moz-box-shadow: 0 0 20px gray;
+  -webkit-box-shadow: 0 0 20px gray;
 }
 
 .main_first_row {
@@ -114,11 +122,19 @@ input[type='button']:active, input[type='submit']:active {
 }
 
 .registration_form {
-  margin: auto;
-  padding: 25px;
   background: white;
+  margin: auto;
+  margin-top: 50px;
+  padding: 25px;
   width: 306px;
   height: 210px;
+  border: 1px solid black;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  box-shadow: 0 0 20px gray;
+  -moz-box-shadow: 0 0 20px gray;
+  -webkit-box-shadow: 0 0 20px gray;
 }
 
 .registration_header {
@@ -171,9 +187,17 @@ input[type='button']:active, input[type='submit']:active {
 .recovery_form {
   background: white;
   margin: auto;
+  margin-top: 50px;
   padding: 25px;
   width: 306px;
   height: 100px;
+  border: 1px solid black;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  box-shadow: 0 0 20px gray;
+  -moz-box-shadow: 0 0 20px gray;
+  -webkit-box-shadow: 0 0 20px gray;
 }
 
 .recovery_header {

@@ -24,26 +24,26 @@ $(document).ready(function(){
     $.get(
       '/my_events',
       function(data){
-        $('#all_events_list_content').html('');
-        $('#all_events_list_content').append(data);
+        $('#all_events_content').html('');
+        $('#all_events_content').append(data);
       },
       'html'
     );
-    $('.all_events_list_title').html('My events');
-    $('.all_events_list').css('display', 'block');
+    $('.all_events_name').html('My events');
+    $('.all_events').css('display', 'block');
   });
 
   $('#all_events').click(function(){
     $.get(
       '/share_events',
       function(data){
-        $('#all_events_list_content').html('');
-        $('#all_events_list_content').append(data);
+        $('#all_events_content').html('');
+        $('#all_events_content').append(data);
       },
      'html'
     );
-    $('.all_events_list_title').html('All events');
-    $('.all_events_list').css('display', 'block');
+    $('.all_events_name').html('All events');
+    $('.all_events').css('display', 'block');
   });
 
   $('#user_submit').live('click',function(){
@@ -51,18 +51,18 @@ $(document).ready(function(){
     });
   });
 
-//********* All events list form ******
+//********* All events form ******
 
-  $('#all_events_list_close').click(function(){
-    $('.all_events_list').css('display', 'none');
+  $('#all_events_close').click(function(){
+    $('.all_events').css('display', 'none');
   });
   
   $('.all_events_title').live('click', function(){
     $.get(
       $(this).attr('tag'),
       function(data){
-        $('.show_event_content').html('');
-        $('.show_event_content').append(data);
+        $('.show_event_form').html('');
+        $('.show_event_form').append(data);
       },
       'html'
     );

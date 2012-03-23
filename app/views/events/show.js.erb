@@ -1,12 +1,17 @@
-<div class='show_event_title'>
-  <%= @event.title %>
+<div class='show_event_header'>
+  <span class='show_event_title'>
+    <%= @event.title %>
+  </span>
+  <div class='show_event_close btn_close' id='show_event_close'></div>
 </div>
 <div class='show_event_description'>
   <%= @event.description %>
 </div>
 <div class='show_event_point_date'>
-  <%= @event.point_date %>
+  date: <%= @event.point_date %>
 </div>
-<div class='show_event_cycle'>
-  <%= @event.cycle %>
-</div>
+<% if !@event.cycle.blank? %>
+  <div class='show_event_cycle'>
+    period: <%= @event.cycle %>
+  </div>
+<% end %>

@@ -32,7 +32,7 @@
     <div class='events_list_form'>
       <div class='events_list_header'>
         <input type='button' id='events_list_add' class='events_list_add' tag='<%= new_user_event_path(@user) + '.js' %>' value='Add event' />
-        <input type='button' id='events_list_close' class='events_list_close' value='Close' />
+        <div id='events_list_close' class='events_list_close btn_close'></div>
       </div>
       <div id='events_list_content' class='events_list_content'>
       </div>
@@ -41,16 +41,16 @@
 </div>
 
 <!-- My/all events list -->
-<div class='all_events_list'>
+<div class='all_events'>
   <div class='events_list_back'>
   </div>
   <div class='events_list_container'>
-    <div class='events_list_form'>
-      <div class='events_list_header'>
-        <div class='all_events_list_title'>Title</div>
-        <input type='button' id='all_events_list_close' class='events_list_close' value='Close' />
+    <div class='all_events_form'>
+      <div class='all_events_header'>
+        <span class='all_events_name'>Title</span>
+        <div id='all_events_close' class='all_events_close btn_close'></div>
       </div>
-      <div id='all_events_list_content' class='events_list_content'>
+      <div id='all_events_content' class='all_events_content'>
       </div>
     </div>
   </div>
@@ -72,12 +72,6 @@
   </div>
   <div class='show_event_container'>
     <div class='show_event_form'>
-      <div class='show_event_header'>
-        <span>Event info</span>
-        <div class='show_event_close' id='show_event_close'>del</div>
-      </div>
-      <div class='show_event_content'>
-      </div>
     </div>
   </div>
 </div>
