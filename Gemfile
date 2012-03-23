@@ -38,3 +38,5 @@ gem 'jquery-rails'
 # gem 'ruby-debug19', :require => 'ruby-debug'
 gem 'execjs'
 gem 'therubyracer', :platform => 'ruby'
+
+gem 'rspec-rails'
