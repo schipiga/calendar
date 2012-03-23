@@ -9,7 +9,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      render :nothing => true
+      render :text => 'Registration was successfull'
+    else
+      render :text => 'Sorry, something is wrong'
     end
   end
 
@@ -23,14 +25,20 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     respond_to do |format|
-      format.html
+      if @user.nil?
+        render :text => 'Sorry, its absent'
+      else
+        format.html
+      end
     end
   end
 
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(params[:user])
-      render :nothing => true
+      render :text => 'Update was successfull'
+    else
+      render :text => 'Sorry, something is wrong'
     end
   end
 

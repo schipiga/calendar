@@ -13,12 +13,14 @@
     </div>
   </div>
   <div class='middle_column'>
-    <input type='button' id='my_events' value='My events' />
-    <input type='button' id='all_events' value='All events' />
+    <div class='event_buttons'>
+      <input type='button' id='my_events' value='My events' />
+      <input type='button' id='all_events' value='All events' />
+    </div>
     <div id='calendar' class='calendar'></div>
   </div>
   <div class='right_column'>
-    <%= link_to 'Sign out', session_path, :method => :delete %>
+    <%= link_to 'Exit', session_path, :method => :delete %>
   </div>
 </div>
 

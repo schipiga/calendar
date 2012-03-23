@@ -50,46 +50,70 @@ input[type='button']:active, input[type='submit']:active, select:active {
 /* Page */
 
 .content {
-  width: 1200px;
+  width: 860px;
   margin: auto;
   padding: auto;
   margin-top: 50px;
 }
 
 .left_column {
-  width: 350px;
+  width: 220px;
   float: left;
 }
 
 .middle_column {
   display: inline-block;
-  width: 630px;
+  width: 600px;
 }
 
 .right_column {
   display: inline-block;
-  width: 84px;
-  height: 100px;
+  width: 30px;
   float: right;
 }
 
 .profile {
-  width: 270px;
-  margin: auto;
-  padding: auto;
   margin-top: 200px;
 }
 
-.profile_element {
-  width: 270px;
-  margin-bottom: 15px;
+.user_field {
+  margin-top: 5px;
+}
+
+.user_submit {
+  float: right;
+  margin-top: 10px;
+  margin-right: 13px;
+}
+
+.event_buttons {
+  width: 100%;
+  text-align: right;
+}
+
+#my_events {
+  margin-right: 7px;
+}
+
+#all_events {
+  margin-right: 13px;
 }
 
 .calendar {
   float: left;
   margin: auto;
   padding: auto;
-  width: 625px;
+  width: 600px;
+}
+
+.calendar_header {
+  width: 100%;
+  margin-top: 5px;
+  text-align: right;
+}
+
+.year {
+  margin-right: 13px;
 }
 
 /* All events list form */
@@ -272,25 +296,37 @@ input[type='button']:active, input[type='submit']:active, select:active {
 }
 /* Calendar */
 
-table {
-  border-spacing: 0;
+th {
+  color: #555555;
+  font-size: 20px;
+  font-style: italic;
 }
 
 .active_cell {
-  background: yellow;
+  background: url(/assets/active_cell.png);
   width: 80px;
   height: 60px;
   cursor: pointer;
-  border: 1px solid black;
+  text-align: center;
+  font-size: 18px;
 }
 
-.inactive_cell {
-  background: gray;
-  width: 80px;
-  height: 60px;
-  border: 1px solid black;
+.active_cell:hover {
+  background: url(/assets/active_cell_hover.png);
+}
+
+.active_cell:active {
+  background: url(/assets/active_cell_active.png);
 }
 
 .today {
-  background: red;
+  background: url(/assets/today_cell.png);
+}
+
+.today:hover {
+  background: url(/assets/today_cell_hover.png);
+}
+
+.today:active {
+  background: url(/assets/today_cell_active.png);
 }

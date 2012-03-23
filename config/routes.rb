@@ -2,7 +2,7 @@ Calendar::Application.routes.draw do
 
   resources :sessions, :only => ['new', 'create', 'destroy']
   resources :recoveries, :only => ['index', 'new', 'create', 'destroy']
-  resources :users do 
+  resources :users, :except => 'index' do 
     resources :events do
       collection do
         get 'day_events'

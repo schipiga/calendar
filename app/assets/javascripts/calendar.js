@@ -1,6 +1,6 @@
 function setUp(){
-  document.getElementById('calendar').innerHTML = months() + years() +
-                                                  '<div id="cal"></div>';
+  document.getElementById('calendar').innerHTML = '<div class="calendar_header">'
+                          + months() + years() + '</div><div id="cal"></div>';
   document.getElementById('month').selectedIndex = new Date().getMonth();
   var yearList = document.getElementById('year');
   curYear = new Date().getYear() + 1900;
@@ -16,7 +16,7 @@ function setUp(){
 }
 
 function years(){
-  years = '<select id="year">';
+  years = '<select id="year" class="year">';
   for (i = 0; i <= 200; i++){
     years += '<option>' + (1900 + i) + '</option>';
   }
@@ -25,7 +25,7 @@ function years(){
 }
 
 function months(){
-  months = '<select id="month">' +
+  months = '<select id="month" class="year">' +
             '<option>Январь</option>' +
             '<option>Февраль</option>' +
             '<option>Март</option>' +

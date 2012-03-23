@@ -31,7 +31,8 @@ $(document).ready(function(){
   });
 
   $('#user_submit').live('click', function(){
-    $('#u_form').ajaxForm(function(){
+    $('#u_form').ajaxForm(function(data){
+      alert(data);
     });
   });
 
