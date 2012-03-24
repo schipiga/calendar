@@ -131,8 +131,12 @@ $(document).ready(function(){
   });
 
   $('#event_submit').live('click', function(){
-    $('#e_form').ajaxForm(function(){
-      update_events_list();  
+    $('#e_form').ajaxForm(function(data){
+      if (data != '') {
+        alert(data);
+      }else{
+        update_events_list();
+      }
     });
     $('.event').css('display', 'none');
   });

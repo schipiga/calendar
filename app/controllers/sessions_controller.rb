@@ -15,6 +15,7 @@ class SessionsController < ApplicationController
                              params[:session][:password])
 
     if user.nil?
+      flash[:error] = 'No today, guy!'
       redirect_to root_path
     else
       sign_in user

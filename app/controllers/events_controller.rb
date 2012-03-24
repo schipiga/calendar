@@ -63,14 +63,18 @@ class EventsController < ApplicationController
   def create
     @event = current_user.events.new(params[:event])
     if @event.save
-      render :nothing => true
+      render :text => '' 
+    else
+      render :text => "Can't create!"
     end
   end
 
   def update
     @event = current_user.events.find(params[:id])
     if @event.update_attributes(params[:event])
-      render :nothing => true
+      render :text => ''
+    else
+      render :text => "Can't update!"
     end
   end
 

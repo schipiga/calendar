@@ -25,11 +25,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     respond_to do |format|
-      if @user.nil?
-        render :text => 'Sorry, its absent'
-      else
         format.html
-      end
     end
   end
 

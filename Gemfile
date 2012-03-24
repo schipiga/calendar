@@ -39,4 +39,7 @@ gem 'jquery-rails'
 gem 'execjs'
 gem 'therubyracer', :platform => 'ruby'
 
-gem 'rspec-rails'
+group :test do
+  gem 'rspec-rails'
+  gem 'webrat'
+end
