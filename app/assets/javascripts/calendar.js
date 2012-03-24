@@ -75,7 +75,7 @@ function calendar(){
       if (cur_day == day && (1900 + cur_year) == year && cur_month == month){
         cls += ' today';
       }
-      calendar +='<td class="' + cls + '">' + day + '</td>';
+      calendar +='<td class="' + cls + '" id="cell-' + day + '">' + day + '</td>';
     }
     calendar += '</tr>';
   }

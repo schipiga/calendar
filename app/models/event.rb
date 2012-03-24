@@ -14,8 +14,8 @@ class Event < ActiveRecord::Base
 #  validates :point_date,
 #                         :format => { :with => date_regex }
 #  validates :is_share, :presence => true,
-#                       :inclusion => { :in => %w[0 1] }
-#  validates :cycle, :inclusion => { :in => %w[ daily weekly monthly yearly] }
+#                       :inclusion => { :in => %w(0 1) }
+#  validates :cycle, :inclusion => { :in => %w( daily weekly monthly yearly) }
 #  validates :user_id, :presence => true, :format => { :with => /\A\d+/ }
   
   before_save :set_cycle, :set_dow

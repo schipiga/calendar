@@ -1,14 +1,17 @@
 $(document).ready(function(){
   setUp();
+  get_month_events();
 
 //********* Page **********************
 
   $('#year').click(function(){
     calendar();
+    get_month_events();
   });
 
   $('#month').click(function(){
     calendar();
+    get_month_events();
   });
 
   $('.active_cell').live('click', function(){
@@ -93,7 +96,8 @@ $(document).ready(function(){
       $(this).attr('tag'),
       {_method:'delete', authenticity_token:$('#authenticity_token').val()},
       function(){
-        update_events_list()
+        get_month_events();
+        update_events_list();
       }
     );
   });
@@ -135,6 +139,7 @@ $(document).ready(function(){
       if (data != '') {
         alert(data);
       }else{
+        get_month_events();
         update_events_list();
       }
     });
@@ -159,5 +164,20 @@ function update_events_list(){
       $('#events_list_content').append(data);
     },
     'html'
+  );
+}
+
+function get_month_events(){
+  $('.active_cell').attr('title', 'counts: 0');
+  $.getJSON(
+    '/month_events.json',
+    {month:(document.getElementById('month').selectedIndex + 1),
+                    year:document.getElementById('year').value},
+    function(json){
+      $.each(json, function(i){
+        $('#cell-' + json[i]['day']).attr('title','counts: ' +
+                                          json[i]['count']);
+      });
+    }
   );
 }

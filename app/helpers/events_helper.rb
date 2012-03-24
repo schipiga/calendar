@@ -26,10 +26,14 @@ module EventsHelper
   end
 
   def events_in_month(month, year)
+    
+    month = month.to_i
+    year = year.to_i
+
     list_once = {}
     events = current_user.events.select('point_date').where(
-      'point_date < date(?) AND point_date > date(?) AND cycle IS NULL',
-      Date.civil(year.to_i, month.to_i, -1), year + '-' + month + '-01')
+      'point_date <= date(?) AND point_date >= date(?) AND cycle = ""',
+      Date.civil(year, month, -1), Date.civil(year, month, 1))
     
     events.each { |e|
       if list_once[e['point_date'].day].nil?
@@ -40,34 +44,39 @@ module EventsHelper
     }
     
     list_period = {}
-    1.upto(Date.civil(year.to_i, month.to_i, -1).day) { |i|
+    1.upto(Date.civil(year, month, -1).day) { |i|
       list_period[i] = 0
     }
     events = current_user.events.select('point_date, cycle, dow').where(
-      'point_date < date(?) AND cycle IS NOT NULL',
-      Date.civil(year.to_i, month.to_i, -1))
+      'point_date <= date(?) AND cycle <> ""',
+      Date.civil(year, month, -1))
     
     events.each { |e|
       case e['cycle']
       when 'daily'
+        # da = e['point_date'].day
         list_period.each { |key, value|
-          list_period[key] += 1
+          if Date.civil(year, month, key) >= e['point_date']
+            list_period[key] += 1
+          end
         }
 
       when 'weekly'
         list_period.each { |key, value|
-          if Date.civil(year.to_i, month.to_i, key).wday == e['dow']
-            if Date.civil(year.to_i, month.to_i, key).day >= e['point_date'].day
+          if Date.civil(year, month, key).wday == e['dow']
+            if Date.civil(year, month, key) >= e['point_date']
               list_period[key] += 1
             end
           end
         }
 
       when 'monthly'
-        list_period[e['point_date'].day] += 1
-      
+        if Date.civil(year, month, -1) > e['point_date']
+          list_period[e['point_date'].day] += 1
+        end
+         
       when 'yearly'
-        if e['point_date'].month == month.to_i
+        if e['point_date'].month == month
           list_period[e['point_date'].day] +=1
         end
       end
