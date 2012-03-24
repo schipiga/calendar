@@ -1,23 +1,31 @@
-<%= form_for [current_user, @event], :html => {:id => 'e_form'} do |f| %>
+<%= form_for [current_user, @event], :html => { :id => 'e_form' } do |f| %>
   <div class='event_header'>
     <%= f.text_field :title, :placeholder => 'Title', :class => 'event_title' %>
     <div id='event_close' class='event_close btn_close'></div>
   </div>
-  <%= f.text_area :description, :placeholder => 'Description', :class => 'event_description', :maxlength => 500 %>
+  <%= f.text_area :description, :placeholder => 'Description',
+                  :class => 'event_description', :maxlength => 500 %>
   <div class='event_div_point_date'>
-    <%= f.text_field :point_date, :id => 'event_point_date', :class => 'event_point_date' %>
+    <%= f.text_field :point_date, :id => 'event_point_date',
+                     :class => 'event_point_date' %>
   </div>
   <div class='event_div_is_share'>
-    <%= f.check_box :is_share, :id => 'event_is_share', :class => 'event_is_share' %>Available for public view?
+    <%= f.check_box :is_share, :id => 'event_is_share',
+                    :class => 'event_is_share' %>Available for public view?
   </div>
   <div class='event_div_is_cycle'>
-    <%= f.check_box :is_cycle, :id => 'event_is_cycle', :class => 'event_is_cycle' %>Repeat event?
+    <%= f.check_box :is_cycle, :id => 'event_is_cycle',
+                    :class => 'event_is_cycle' %>Repeat event?
   </div>
   <div class='event_div_cycle'>
-    <%= f.radio_button :cycle, 'daily', :class => 'event_cycle', :disabled => '' %>Daily
-    <%= f.radio_button :cycle, 'weekly', :class => 'event_cycle', :disabled => '' %>Weekly
-    <%= f.radio_button :cycle, 'monthly', :class => 'event_cycle', :disabled => '' %>Monthly
-    <%= f.radio_button :cycle, 'yearly', :class => 'event_cycle', :disabled => '' %>Yearly
+    <%= f.radio_button :cycle, 'daily', :class => 'event_cycle',
+                                        :disabled => '' %>Daily
+    <%= f.radio_button :cycle, 'weekly', :class => 'event_cycle',
+                                         :disabled => '' %>Weekly
+    <%= f.radio_button :cycle, 'monthly', :class => 'event_cycle',
+                                          :disabled => '' %>Monthly
+    <%= f.radio_button :cycle, 'yearly', :class => 'event_cycle',
+                                         :disabled => '' %>Yearly
   </div>
   <%= f.submit 'Save', :id => 'event_submit', :class => 'event_submit' %>
 <% end %>

@@ -1,11 +1,15 @@
-<% if @events.size > 0 %>
+<% if !@events.blank? %>
   <% if protect_against_forgery? %>
-    <input id='authenticity_token' type='hidden' value='<%= form_authenticity_token %>'>
+    <input id='authenticity_token' type='hidden' value=
+                        '<%= form_authenticity_token %>'>
   <% end %>
   <% @events.each do |e| %>
     <div class='events_list_unit'>
-      <span class='events_list_title' tag='<%= edit_user_event_path(current_user, e['id']) + '.js' %>'><%= e['title'] %></span>
-      <span class='events_list_del btn_close' tag='<%= user_event_path(current_user, e['id']) %>'></span>
+      <span class='events_list_title' tag=
+                  '<%= edit_user_event_path(current_user, e['id']) + '.js' %>'>
+                  <%= e['title'] %></span>
+      <span class='events_list_del btn_close' tag=
+                        '<%= user_event_path(current_user, e['id']) %>'></span>
     </div>
   <% end %>
 <% end %>

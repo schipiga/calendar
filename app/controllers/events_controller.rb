@@ -42,14 +42,14 @@ class EventsController < ApplicationController
   def show_share
     @event = Event.where('id = ? AND is_share = ?', params[:id], true)[0]
     respond_to do |format|
-      format.js {render 'show'}
+      format.js { render 'show' }
     end
   end
 
   def show_my
     @event = current_user.events.find(params[:id])
     respond_to do |format|
-      format.js {render 'show'}
+      format.js { render 'show' }
     end
   end
 

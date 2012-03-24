@@ -1,3 +1,5 @@
 <% @events.each do |e| %>
-  <div class='all_events_title' tag='<%= show_share_user_event_path(current_user, e['id']) + '.js' %>'><%= e.title %></div>
+  <div class='all_events_title' tag=
+    '<%= show_share_user_event_path(current_user, e['id']) + '.js' %>'>
+    <%= e.title %></div>
 <% end %>

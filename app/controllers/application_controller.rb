@@ -6,8 +6,8 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def record_not_found
-    render :text => "Sorry boy :( You're out of luck"
-  end
+    def record_not_found
+      render :text => "Sorry boy :( You're out of luck"
+    end
 
 end
