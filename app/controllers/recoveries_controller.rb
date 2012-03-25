@@ -41,7 +41,7 @@ class RecoveriesController < ApplicationController
         render :text => "can't send"
       end
 =end
-    end
+#    end
   end
 
   def update
