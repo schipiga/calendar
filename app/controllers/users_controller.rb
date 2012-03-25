@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      render :text => 'Registration was successfull'
+      render :text => 'Registration was successful'
     else
       render :text => 'Sorry, something is wrong'
     end
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(params[:user])
-      render :text => 'Update was successfull'
+      render :text => 'Update was successful'
     else
       render :text => 'Sorry, something is wrong'
     end

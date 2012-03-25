@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   private
 
     def record_not_found
-      render :text => "Sorry boy :( You're out of luck"
+      redirect_to current_user
     end
 
 end
