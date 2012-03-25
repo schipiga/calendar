@@ -23,9 +23,10 @@ class RecoveriesController < ApplicationController
 
   def create
     user = User.find_by_email(params[:recovery][:email])
-    render :text => 'stub'
     if user.nil?
       render :text => 'User not found' 
+    else
+      render :text => 'User found'
     end
 =begin
     else
