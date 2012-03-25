@@ -9,7 +9,7 @@ module EventsHelper
     events += current_user.events.select('id, title').where(request,
                                                             { :date => date })
 
-    request = "point_date < :date AND cycle = 'weekly' AND dow = dow"
+    request = "point_date < :date AND cycle = 'weekly' AND dow = :dow"
     events += current_user.events.select('id, title').where(request, { :date => date, :dow => date.wday })
 
 =begin
