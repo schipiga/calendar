@@ -5,8 +5,8 @@ module EventsHelper
     events = current_user.events.select('id, title').where('point_date = ?',
                                                            date)
 
-    request = "point_date < :cur_date AND cycle = 'daily'"
-    events += current_user.events.select('id, title').where(request, { :cur_date => date })
+    request = "point_date < :date AND cycle = 'daily'"
+    events += current_user.events.select('id, title').where(request, { :date => date })
 
 =begin        
     request = 'point_date < date(?) AND cycle = "weekly" AND dow =' +
