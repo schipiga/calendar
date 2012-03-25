@@ -2,6 +2,7 @@ module EventsHelper
 
   def events_in_day(date)
     date = Date.parse(date)
+
     events = current_user.events.select('id, title').where('point_date = ?',
                                                            date)
 
