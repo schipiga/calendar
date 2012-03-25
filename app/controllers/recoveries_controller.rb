@@ -26,12 +26,12 @@ class RecoveriesController < ApplicationController
     if user.nil?
       render :text => 'User not found' 
     else
-      Recovery.delete_all(['user_id = ?', user[:id]])
+      # Recovery.delete_all(['user_id = ?', user[:id]])
       key = rec_key(user[:email])
       rec = Recovery.new(:key => key, :user_id => user[:id])
       if rec.save
         # UserMailer.recovery_pswd(user[:email], root_url + 'recovery?key=' + key).deliver
-        render :text => root_url + 'recovery?key=' + key
+        # render :text => root_url + 'recovery?key=' + key
         render :text => 'sended'
       else
         render :text => "can't send"
