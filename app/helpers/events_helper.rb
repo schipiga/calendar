@@ -10,13 +10,19 @@ module EventsHelper
                                                             { :date => date })
 
     request = "point_date < :date AND cycle = 'weekly' AND dow = :dow"
-    events += current_user.events.select('id, title').where(request, { :date => date, :dow => date.wday })
+    events += current_user.events.select('id, title').where(request,
+                                { :date => date, :dow => date.wday })
 
-    request = "point_date < :date AND cycle = 'monthly' AND EXTRACT(DAY FROM point_date) = :day"
-    events += current_user.events.select('id, title').where(request, { :date => date, :day => date.day })
+    request = "point_date < :date AND cycle = 'monthly' AND" + 
+              " EXTRACT(DAY FROM point_date) = :day"
+    events += current_user.events.select('id, title').where(request,
+                                { :date => date, :day => date.day })
 
-    request = "point_date < :date AND cycle = 'yearly' AND EXTRACT(MONTH FROM point_date) = :month AND EXTRACT(DAY FROM point_date) = :day" # || EXTRACT(MONTH FROM :date) || '-' || EXTRACT(DAY FROM :date)"
-    events += current_user.events.select('id, title').where(request, { :date => date, :month => date.month, :day => date.day })
+    request = "point_date < :date AND cycle = 'yearly' AND" +
+              " EXTRACT(MONTH FROM point_date) = :month AND" +
+              " EXTRACT(DAY FROM point_date) = :day"
+    events += current_user.events.select('id, title').where(request,
+          { :date => date, :month => date.month, :day => date.day })
     
     return events
   end
@@ -29,7 +35,8 @@ module EventsHelper
     list_once = {}
     events = current_user.events.select('point_date').where(
       "point_date <= :end_date AND point_date >= :start_date AND cycle = ''",
-      { :end_date => Date.civil(year, month, -1), :start_date => Date.civil(year, month, 1) })
+      { :end_date => Date.civil(year, month, -1),
+        :start_date => Date.civil(year, month, 1) })
     
     events.each { |e|
       if list_once[e['point_date'].day].nil?
@@ -50,7 +57,6 @@ module EventsHelper
     events.each { |e|
       case e['cycle']
       when 'daily'
-        # da = e['point_date'].day
         list_period.each { |key, value|
           if Date.civil(year, month, key) >= e['point_date']
             list_period[key] += 1
