@@ -24,11 +24,12 @@ class RecoveriesController < ApplicationController
   def create
     user = User.find_by_email(params[:recovery][:email])
     render :text => 'stub'
-=begin
     if user.nil?
       render :text => 'User not found' 
     else
-      Recovery.delete_all(['user_id = ?', user[:id]])
+      # Recovery.delete_all(['user_id = ?', user[:id]])
+      render :text => 'User found'
+=begin
       key = rec_key(user[:email])
       rec = Recovery.new(:key => key, :user_id => user[:id])
       if rec.save
@@ -38,8 +39,8 @@ class RecoveriesController < ApplicationController
       else
         render :text => "can't send"
       end
-    end
 =end
+    end
   end
 
   def update
