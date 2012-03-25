@@ -2,6 +2,8 @@ class SessionsController < ApplicationController
 
   layout 'index', :only => [:new]
 
+  before_filter :redirection, :only => [:new]
+
   def new
     @user = User.new
     respond_to do |format|
@@ -27,4 +29,11 @@ class SessionsController < ApplicationController
     sign_out
     redirect_to root_path
   end
+
+  private
+
+    def redirection
+      redirect_to current_user unless !signed_in?
+    end
+
 end

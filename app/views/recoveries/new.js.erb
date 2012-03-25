@@ -1,6 +1,6 @@
-<%= form_for :recovery, :url => recoveries_path do |f| %>
+<%= form_for :recovery, :url => recoveries_path, :html => { :id => 'r_form' } do |f| %>
   <%= f.text_field :email, :placeholder => 'e-mail',
                            :class => 'recovery_email' %>
-  <%= f.submit 'Recovery', :class => 'recovery_submit' %>
+  <%= f.submit 'Recovery', :class => 'recovery_submit', :id => 'recovery_submit' %>
 <% end %>
 

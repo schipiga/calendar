@@ -168,14 +168,14 @@ function update_events_list(){
 }
 
 function get_month_events(){
-  $('.active_cell').attr('title', 'counts: 0');
+  $('.active_cell').attr('title', 'events: 0');
   $.getJSON(
     '/month_events.json',
     {month:(document.getElementById('month').selectedIndex + 1),
                     year:document.getElementById('year').value},
     function(json){
       $.each(json, function(i){
-        $('#cell-' + json[i]['day']).attr('title','counts: ' +
+        $('#cell-' + json[i]['day']).attr('title','events: ' +
                                           json[i]['count']);
       });
     }

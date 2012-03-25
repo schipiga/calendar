@@ -1,0 +1,12 @@
+<%= form_for @user, :url => change_pswd_path, :html => { :id => 'u_form' } do |f| %>
+  <input id="user_fio" name="key" type="hidden" value=<%= @key %>> 
+  <%= f.text_field :fio, :placeholder => 'Name Surname',
+                         :class => 'user_field' %>
+  <%= f.text_field :email, :placeholder => 'e-mail', :class => 'user_field' %>
+  <%= f.password_field :password, :placeholder => 'password',
+                                  :class => 'user_field' %>
+  <%= f.password_field :password_confirmation,
+                       :placeholder => 'confirm password',
+                       :class => 'user_field' %>
+  <%= f.submit 'Save', :class => 'user_submit', :id => 'user_submit' %>
+<% end %>

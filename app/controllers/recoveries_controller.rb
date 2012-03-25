@@ -1,11 +1,16 @@
 class RecoveriesController < ApplicationController
 
+  layout 'index', :only => [:show] 
+  
   include RecoveriesHelper
 
-  def index 
+  def show 
     if rec = Recovery.find_by_key(params[:key])
       @user = rec.user
-      render 'users/_form_user'
+      @key = params[:key]
+      respond_to do |format|
+        format.html
+      end
     end
   end
 
@@ -17,16 +22,33 @@ class RecoveriesController < ApplicationController
   end
 
   def create
-    if user = User.find_by_email(params[:recovery][:email])
-      Recovery.deleteall(['user_id = ?', user[:id]])
-      @rec = Recovery.new(rec_key(user[:email]), user[:id])
-      @res.save
-      UserMailer.recovery_pswd(user).deliver
+    user = User.find_by_email(params[:recovery][:email])
+    if user.nil?
+      render :text => 'User not found' 
+    else
+      Recovery.delete_all(['user_id = ?', user[:id]])
+      key = rec_key(user[:email])
+      rec = Recovery.new(:key => key, :user_id => user[:id])
+      if rec.save
+        email = UserMailer.recovery_pswd(user[:email], root_url + 'recovery?key=' + key).deliver
+        # render :text => root_url + 'recovery?key=' + key
+        render :text => 'sended'
+      else
+        render :text => "can't send"
+      end
     end
   end
 
-  def destroy
-
+  def update
+    if Recovery.find_by_key(params[:key])   
+      @user = User.find_by_email(params[:user][:email])
+      if @user.update_attributes(params[:user])
+        render :text => 'Update was successfull'
+      else
+        render :text => 'Sorry, something is wrong'
+      end
+    else
+      render :text => 'Access denied!'
+    end
   end
-
 end

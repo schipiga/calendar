@@ -42,5 +42,11 @@ $(document).ready(function(){
     $('.recovery').css('display', 'none');
   });
 
+  $('#recovery_submit').live('click', function(){
+    $('#r_form').ajaxForm(function(data){
+      alert(data);
+    });
+  });
+
 });
 

@@ -1,7 +1,7 @@
 Calendar::Application.routes.draw do
 
   resources :sessions, :only => ['new', 'create', 'destroy']
-  resources :recoveries, :only => ['index', 'new', 'create', 'destroy']
+  resources :recoveries, :only => ['new', 'show', 'create', 'update']
   resources :users, :except => 'index' do 
     resources :events do
       collection do
@@ -22,6 +22,9 @@ Calendar::Application.routes.draw do
   match '/month_events' => 'events#month_events'
   match '/my_events' => 'events#user_events'
   match '/share_events' => 'events#share_events'
+
+  match '/recovery' => 'recoveries#show'
+  match '/change_pswd' => 'recoveries#update'
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
