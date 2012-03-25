@@ -24,9 +24,10 @@ class RecoveriesController < ApplicationController
   def create
     user = User.find_by_email(params[:recovery][:email])
     render :text => 'stub'
-=begin
     if user.nil?
       render :text => 'User not found' 
+    end
+=begin
     else
       # Recovery.delete_all(['user_id = ?', user[:id]])
       render :text => 'User found'
