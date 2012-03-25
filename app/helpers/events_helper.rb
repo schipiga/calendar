@@ -12,11 +12,11 @@ module EventsHelper
     request = "point_date < :date AND cycle = 'weekly' AND dow = :dow"
     events += current_user.events.select('id, title').where(request, { :date => date, :dow => date.wday })
 
-    request = "point_date < :date AND cycle = 'monthly' AND EXTRACT(MONTH FROM point_date) = :day"
+    request = "point_date < :date AND cycle = 'monthly' AND EXTRACT(DAY FROM point_date) = :day"
     events += current_user.events.select('id, title').where(request, { :date => date, :day => date.day })
 
-    request = "point_date < :date AND cycle = 'yearly' AND point_date LIKE '%-' || EXTRACT(MONTH FROM :date) || '-' || EXTRACT(DAY FROM :date)"
-    events += current_user.events.select('id, title').where(request, { :date => date })
+    request = "point_date < :date AND cycle = 'yearly' AND EXTRACT(MONTH FROM point_date) = :month AND EXTRACT(DAY FROM point_date) = :day" # || EXTRACT(MONTH FROM :date) || '-' || EXTRACT(DAY FROM :date)"
+    events += current_user.events.select('id, title').where(request, { :date => date, :month => date.month, :day => date.day })
     
     return events
   end
