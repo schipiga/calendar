@@ -120,7 +120,7 @@ input[type='button']:active, input[type='submit']:active, select:active {
 }
 
 .all_events_form {
-  background: white;
+  background: #eee;
   margin: auto;
   margin-top: 50px;
   padding: 25px;
@@ -180,7 +180,7 @@ input[type='button']:active, input[type='submit']:active, select:active {
 }
 
 .events_list_form {
-  background: white;
+  background: #eee;
   margin: auto;
   margin-top: 50px;
   padding: 25px;
@@ -249,7 +249,7 @@ input[type='button']:active, input[type='submit']:active, select:active {
 }
 
 .event_form {
-  background: white;
+  background: #eee;
   margin: auto;
   margin-top: 50px;
   padding: 25px;
@@ -344,7 +344,7 @@ input[type='button']:active, input[type='submit']:active, select:active {
 }
 
 .show_event_form {
-  background: white;
+  background: #eee;
   margin: auto;
   margin-top: 50px;
   padding: 25px;
@@ -377,7 +377,7 @@ input[type='button']:active, input[type='submit']:active, select:active {
   border-radius: 3px;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
-  background: #eee;
+  background: #e0e0e0;
   color: gray;
 }
 

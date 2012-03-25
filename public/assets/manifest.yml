@@ -6,6 +6,7 @@ background.png: background-4bdb29e47375f28af1eb5c6aaa028b6e.png
 btn.png: btn-3d36f2f30e7844b949269f6e5a997ccb.png
 btn_clk.png: btn_clk-c6f94f688c9e1052a89707df21ece934.png
 btn_over.png: btn_over-d6cc9fa2ad1e395e20e0422dad3b9003.png
+calendar.png: calendar-60cc386ff17e2f216c36c559509ff076.png
 del.png: del-51eabee4de6d04a4f23cbc03b4137308.png
 del_clk.png: del_clk-2b1037326cae3d3533d6e3cf3189065d.png
 del_over.png: del_over-c6a8118634049d86702c6a078a870c8b.png
@@ -28,10 +29,10 @@ index.js: index-6d467eb408c40b213605735d01829af0.js
 recoveries.js: recoveries-95f0ace38133acd0b2226f2c4181b3f3.js
 sessions.js: sessions-95f0ace38133acd0b2226f2c4181b3f3.js
 users.js: users-95f0ace38133acd0b2226f2c4181b3f3.js
-application.css: application-9a078c9bdd62dbec9c6dccffd6449739.css
-cabinet.css: cabinet-52bb062b51b7253e9d0d1ce5f5320c4a.css
+application.css: application-abb1dc00670a6ffb316b8fb3703316ee.css
+cabinet.css: cabinet-8c8ab754478faef42c8218eb8a17f5ba.css
 events.css: events-95bd4fe1de99c1cd91ec8e6f348a44bd.css
-index.css: index-994954ec50b0b5e49f565d5554e2c0b2.css
+index.css: index-6892a3a0b2f676bd5f3250df491c344b.css
 recoveries.css: recoveries-95bd4fe1de99c1cd91ec8e6f348a44bd.css
 sessions.css: sessions-95bd4fe1de99c1cd91ec8e6f348a44bd.css
 users.css: users-95bd4fe1de99c1cd91ec8e6f348a44bd.css
