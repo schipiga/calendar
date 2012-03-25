@@ -22,6 +22,8 @@ class RecoveriesController < ApplicationController
   end
 
   def create
+    render :text => 'Stub'
+=begin
     user = User.find_by_email(params[:recovery][:email])
     if user.nil?
       render :text => 'User not found' 
@@ -37,6 +39,7 @@ class RecoveriesController < ApplicationController
         render :text => "can't send"
       end
     end
+=end
   end
 
   def update
