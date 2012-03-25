@@ -26,18 +26,18 @@ function years(){
 
 function months(){
   months = '<select id="month" class="year">' +
-            '<option>Январь</option>' +
-            '<option>Февраль</option>' +
-            '<option>Март</option>' +
-            '<option>Апрель</option>' +
-            '<option>Май</option>' +
-            '<option>Июнь</option>' +
-            '<option>Июль</option>' +
-            '<option>Август</option>' +
-            '<option>Сентябрь</option>' +
-            '<option>Октябрь</option>' +
-            '<option>Ноябрь</option>' +
-            '<option>Декабрь</option>' +
+            '<option>January</option>' +
+            '<option>February</option>' +
+            '<option>March</option>' +
+            '<option>Аpril</option>' +
+            '<option>May</option>' +
+            '<option>June</option>' +
+            '<option>July</option>' +
+            '<option>August</option>' +
+            '<option>September</option>' +
+            '<option>October</option>' +
+            '<option>November</option>' +
+            '<option>December</option>' +
             '</select>';
   return months;
 }
