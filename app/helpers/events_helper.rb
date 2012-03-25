@@ -1,5 +1,6 @@
 module EventsHelper
 
+  # return events list for current date
   def events_in_day(date)
     date = Date.parse(date)
 
@@ -14,6 +15,8 @@ module EventsHelper
     events += current_user.events.select('id, title').where(request,
                                 { :date => date, :dow => date.wday })
 
+    # I'm so sorry, but here hardcode begins, it links defined database,
+    # due to different sql-syntax. My design fault. It will be fixed, promise
     request = "point_date < :date AND cycle = 'monthly' AND" + 
               " EXTRACT(DAY FROM point_date) = :day"
     events += current_user.events.select('id, title').where(request,
@@ -28,17 +31,20 @@ module EventsHelper
     return events
   end
 
+  # return events count for days of month, real magic :)
   def events_in_month(month, year)
     
     month = month.to_i
     year = year.to_i
 
+    # the first, select onetime events
     list_once = {}
     events = current_user.events.select('point_date').where(
       "point_date <= :end_date AND point_date >= :start_date AND cycle = ''",
       { :end_date => Date.civil(year, month, -1),
         :start_date => Date.civil(year, month, 1) })
     
+    # calculate counts
     events.each { |e|
       if list_once[e['point_date'].day].nil?
         list_once[e['point_date'].day] = 1
@@ -47,6 +53,7 @@ module EventsHelper
       end
     }
     
+    # later, select period events
     list_period = {}
     1.upto(Date.civil(year, month, -1).day) { |i|
       list_period[i] = 0
@@ -55,6 +62,7 @@ module EventsHelper
       "point_date <= :date AND cycle <> ''",
       { :date => Date.civil(year, month, -1) })
     
+    # sort periodical events, depending form period type
     events.each { |e|
       case e['cycle']
       when 'daily'
@@ -84,7 +92,8 @@ module EventsHelper
         end
       end
     }
-
+    
+    # sum period and onetime events
     events = []
     i = 0
     list_period.each { |key, value|
@@ -98,6 +107,7 @@ module EventsHelper
         i += 1
       end
     }
+
     return events
   end
 end

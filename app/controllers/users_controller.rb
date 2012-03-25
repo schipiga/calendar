@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   before_filter :authenticate, :only => [:show, :update]
   before_filter :correct_user, :only => [:show, :update]
 
-
+  # POST create new user (ajax)
   def create
     @user = User.new(params[:user])
     if @user.save
@@ -15,6 +15,7 @@ class UsersController < ApplicationController
     end
   end
 
+  # GET new user for registration (ajax)
   def new
     @user = User.new
     respond_to do |format|
@@ -22,6 +23,7 @@ class UsersController < ApplicationController
     end
   end
 
+  # GET show user's information
   def show
     @user = User.find(params[:id])
     respond_to do |format|
@@ -29,6 +31,7 @@ class UsersController < ApplicationController
     end
   end
 
+  # PUT update user's information
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(params[:user])

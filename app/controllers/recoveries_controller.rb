@@ -4,6 +4,7 @@ class RecoveriesController < ApplicationController
   
   include RecoveriesHelper
 
+  # GET show recovery password form
   def show 
     if rec = Recovery.find_by_key(params[:key])
       @user = rec.user
@@ -14,6 +15,7 @@ class RecoveriesController < ApplicationController
     end
   end
 
+  # GET form for e-mail sending (ajax)
   def new
     $rec = Recovery.new
     respond_to do |format|
@@ -21,16 +23,22 @@ class RecoveriesController < ApplicationController
     end
   end
 
+  # POST create record into db and send e-mail
   def create
     user = User.find_by_email(params[:recovery][:email])
     if user.nil?
       render :text => 'User not found' 
     else
+      # HACK clear db from old records for current user
       Recovery.delete_all(['user_id = ?', user[:id]])
+
       key = rec_key(user[:email])
+      
       rec = Recovery.new(:key => key, :user_id => user[:id])
       if rec.save
-        UserMailer.recovery_pswd(user[:email], root_url + 'recovery?key=' + key).deliver
+        # FIXME tune heroku.com, because doesn't work currently
+        UserMailer.recovery_pswd(user[:email],
+                                 root_url + 'recovery?key=' + key).deliver
         # render :text => root_url + 'recovery?key=' + key
         render :text => 'sended'
       else
@@ -39,6 +47,7 @@ class RecoveriesController < ApplicationController
     end
   end
 
+  # PUT update all user's information, including password
   def update
     if Recovery.find_by_key(params[:key])   
       @user = User.find_by_email(params[:user][:email])

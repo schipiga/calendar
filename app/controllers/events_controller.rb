@@ -3,14 +3,16 @@ class EventsController < ApplicationController
   include EventsHelper
 
   before_filter :authenticate
-
+  
+  # GET new event (ajax)
   def new
     @event = current_user.events.new
     respond_to do |format|
       format.js
     end
   end  
-    
+  
+  # GET show shared events (ajax)
   def share_events
     @events = Event.where('is_share = ?', true)
     respond_to do |format|
@@ -18,6 +20,7 @@ class EventsController < ApplicationController
     end
   end
 
+  # GET user_events (ajax)
   def user_events
     @events = current_user.events
     respond_to do |format|
@@ -25,6 +28,7 @@ class EventsController < ApplicationController
     end
   end
 
+  # GET day events (ajax)
   def day_events
     @events = events_in_day(params[:date])
     respond_to do |format|
@@ -32,6 +36,7 @@ class EventsController < ApplicationController
     end
   end
 
+  # GET events for days of current month (ajax)
   def month_events
     @events = events_in_month(params[:month], params[:year])
     respond_to do |format|
@@ -39,6 +44,7 @@ class EventsController < ApplicationController
     end
   end
 
+  # GET show detail of shared event (ajax)
   def show_share
     @event = Event.where('id = ? AND is_share = ?', params[:id], true)[0]
     respond_to do |format|
@@ -46,6 +52,7 @@ class EventsController < ApplicationController
     end
   end
 
+  # GET show detail of user event (ajax)
   def show_my
     @event = current_user.events.find(params[:id])
     respond_to do |format|
@@ -53,6 +60,7 @@ class EventsController < ApplicationController
     end
   end
 
+  # GET edit event (ajax)
   def edit
     @event = current_user.events.find(params[:id])
     respond_to do |format|
@@ -60,6 +68,7 @@ class EventsController < ApplicationController
     end
   end
 
+  # POST create event (ajax)
   def create
     @event = current_user.events.new(params[:event])
     if @event.save
@@ -69,6 +78,7 @@ class EventsController < ApplicationController
     end
   end
 
+  # PUT update event (ajax)
   def update
     @event = current_user.events.find(params[:id])
     if @event.update_attributes(params[:event])
@@ -78,6 +88,7 @@ class EventsController < ApplicationController
     end
   end
 
+  # DELETE destroy event (ajax)
   def destroy
     @event = current_user.events.find(params[:id])
     if @event.destroy
