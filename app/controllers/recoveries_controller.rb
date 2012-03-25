@@ -27,7 +27,7 @@ class RecoveriesController < ApplicationController
       render :text => 'User not found' 
     else
       # Recovery.delete_all(['user_id = ?', user[:id]])
-      # key = rec_key(user[:email])
+      key = rec_key(user[:email])
       render :text => user[:id]
       # rec = Recovery.new(:key => key, :user_id => user[:id])
 =begin
