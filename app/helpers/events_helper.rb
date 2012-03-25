@@ -6,14 +6,13 @@ module EventsHelper
                                                            date)
 
     request = "point_date < :date AND cycle = 'daily'"
-    events += current_user.events.select('id, title').where(request, { :date => date })
+    events += current_user.events.select('id, title').where(request,
+                                                            { :date => date })
 
-=begin        
-    request = 'point_date < date(?) AND cycle = "weekly" AND dow =' +
-              ' strftime("%w", ?)'
-    events += current_user.events.select('id, title').where(request, date,
-              date)
+    request = "point_date < :date AND cycle = 'weekly' AND dow = ?"
+    events += current_user.events.select('id, title').where(request, { :date => date }, date.wday)
 
+=begin
     request = 'point_date < date(?) AND cycle = "monthly" AND strftime("%d",' +
               ' point_date) = strftime("%d", ?)'
     events += current_user.events.select('id, title').where(request, date,
