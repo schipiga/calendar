@@ -5,7 +5,7 @@ module EventsHelper
     events = current_user.events.select('id, title').where('point_date = ?',
                                                            date)
 
-    request = "point_date < :date AND cycle = 'daily'"
+    request = 'point_date < :date AND cycle = "daily"'
     events += current_user.events.select('id, title').where(request, { :date => date })
 
 =begin        
@@ -34,8 +34,8 @@ module EventsHelper
 
     list_once = {}
     events = current_user.events.select('point_date').where(
-      'point_date <= ? AND point_date >= ? AND cycle = ""',
-      Date.civil(year, month, -1), Date.civil(year, month, 1))
+      "point_date <= :end_date AND point_date >= :start_date AND cycle = ''",
+      { :end_date => Date.civil(year, month, -1), :start_date => Date.civil(year, month, 1) })
     
     events.each { |e|
       if list_once[e['point_date'].day].nil?
@@ -50,8 +50,8 @@ module EventsHelper
       list_period[i] = 0
     }
     events = current_user.events.select('point_date, cycle, dow').where(
-      'point_date <= ? AND cycle <> ""',
-      Date.civil(year, month, -1))
+      "point_date <= :date AND cycle <> ''",
+      { :date => Date.civil(year, month, -1) })
     
     events.each { |e|
       case e['cycle']
