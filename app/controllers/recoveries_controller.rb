@@ -30,7 +30,7 @@ class RecoveriesController < ApplicationController
       key = rec_key(user[:email])
       rec = Recovery.new(:key => key, :user_id => user[:id])
       if rec.save
-        # UserMailer.recovery_pswd(user[:email], root_url + 'recovery?key=' + key).deliver
+        UserMailer.recovery_pswd(user[:email], root_url + 'recovery?key=' + key).deliver
         # render :text => root_url + 'recovery?key=' + key
         render :text => 'sended'
       else
