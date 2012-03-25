@@ -28,7 +28,8 @@ class RecoveriesController < ApplicationController
     else
       # Recovery.delete_all(['user_id = ?', user[:id]])
       key = rec_key(user[:email])
-      rec = Recovery.new(:key => key, :user_id => user[:id])
+      render :text => key + " " + user[:id]
+      # rec = Recovery.new(:key => key, :user_id => user[:id])
 =begin
       if rec.save
         email = UserMailer.recovery_pswd(user[:email], root_url + 'recovery?key=' + key).deliver
