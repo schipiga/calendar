@@ -4,7 +4,6 @@ module EventsHelper
     date = Date.parse(date)
     events = current_user.events.select('id, title').where('point_date = ?',
                                                            date)
-=begin
     request = 'point_date < date(?) AND cycle = "daily"'
     events += current_user.events.select('id, title').where(request, date)
         
@@ -22,7 +21,6 @@ module EventsHelper
               ' "%-" || strftime("%m", ?) || "-" || strftime("%d", ?)'
     events += current_user.events.select('id, title').where(request, date,
               date, date)
-=end
     return events
   end
 
@@ -33,7 +31,7 @@ module EventsHelper
 
     list_once = {}
     events = current_user.events.select('point_date').where(
-      'point_date <= date(?) AND point_date >= date(?) AND cycle = ""',
+      'point_date <= ? AND point_date >= ? AND cycle = ""',
       Date.civil(year, month, -1), Date.civil(year, month, 1))
     
     events.each { |e|
@@ -49,7 +47,7 @@ module EventsHelper
       list_period[i] = 0
     }
     events = current_user.events.select('point_date, cycle, dow').where(
-      'point_date <= date(?) AND cycle <> ""',
+      'point_date <= ? AND cycle <> ""',
       Date.civil(year, month, -1))
     
     events.each { |e|
