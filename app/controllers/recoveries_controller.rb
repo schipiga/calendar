@@ -28,7 +28,7 @@ class RecoveriesController < ApplicationController
     else
       # Recovery.delete_all(['user_id = ?', user[:id]])
       # key = rec_key(user[:email])
-      render :text => key + " " + user[:id]
+      render :text => user[:id]
       # rec = Recovery.new(:key => key, :user_id => user[:id])
 =begin
       if rec.save
