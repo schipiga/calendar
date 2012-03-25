@@ -26,10 +26,6 @@ class RecoveriesController < ApplicationController
     if user.nil?
       render :text => 'User not found' 
     else
-      render :text => 'User found'
-    end
-=begin
-    else
       # Recovery.delete_all(['user_id = ?', user[:id]])
       render :text => 'User found'
 =begin
@@ -43,7 +39,7 @@ class RecoveriesController < ApplicationController
         render :text => "can't send"
       end
 =end
-#    end
+    end
   end
 
   def update
