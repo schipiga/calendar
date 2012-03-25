@@ -4,6 +4,7 @@ module EventsHelper
     date = Date.parse(date)
     events = current_user.events.select('id, title').where('point_date = ?',
                                                            date)
+=begin
     request = 'point_date < date(?) AND cycle = "daily"'
     events += current_user.events.select('id, title').where(request, date)
         
@@ -21,6 +22,7 @@ module EventsHelper
               ' "%-" || strftime("%m", ?) || "-" || strftime("%d", ?)'
     events += current_user.events.select('id, title').where(request, date,
               date, date)
+=end
     return events
   end
 
