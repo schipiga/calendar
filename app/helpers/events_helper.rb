@@ -15,12 +15,9 @@ module EventsHelper
     request = "point_date < :date AND cycle = 'monthly' AND EXTRACT(MONTH FROM point_date) = :day"
     events += current_user.events.select('id, title').where(request, { :date => date, :day => date.day })
 
-=begin    
-    request = 'point_date < date(?) AND cycle = "yearly" AND point_date LIKE' +
-              ' "%-" || strftime("%m", ?) || "-" || strftime("%d", ?)'
-    events += current_user.events.select('id, title').where(request, date,
-              date, date)
-=end
+    request = 'point_date < :date AND cycle = "yearly" AND point_date LIKE "%-" || EXTRACT(MONTH FROM :date) || "-" || EXTRACT(DAY FROM :date)'
+    events += current_user.events.select('id, title').where(request, { :date => date })
+    
     return events
   end
 
