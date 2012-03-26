@@ -18,11 +18,11 @@ ActiveRecord::Schema.define(:version => 20120322040441) do
     t.string   "description"
     t.date     "point_date"
     t.boolean  "is_share"
-    t.string   "cycle"
+    t.string   "periodical"
     t.integer  "user_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-    t.integer  "dow"
+    t.integer  "day_of_week"
   end
 
   create_table "recoveries", :force => true do |t|

@@ -5,7 +5,7 @@ class CreateEvents < ActiveRecord::Migration
       t.string :description
       t.date :point_date
       t.boolean :is_share
-      t.string :cycle
+      t.string :periodical
       t.integer :user_id
 
       t.timestamps

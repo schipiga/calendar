@@ -16,17 +16,17 @@
                     :class => 'event_is_share' %>Available for public view?
   </div>
   <div class='event_div_is_cycle'>
-    <%= f.check_box :is_cycle, :id => 'event_is_cycle',
+    <%= f.check_box :is_periodical, :id => 'event_is_cycle',
                     :class => 'event_is_cycle' %>Repeat event?
   </div>
   <div class='event_div_cycle'>
-    <%= f.radio_button :cycle, 'daily', :class => 'event_cycle',
+    <%= f.radio_button :periodical, 'daily', :class => 'event_cycle',
                                         :disabled => '' %>Daily
-    <%= f.radio_button :cycle, 'weekly', :class => 'event_cycle',
+    <%= f.radio_button :periodical, 'weekly', :class => 'event_cycle',
                                          :disabled => '' %>Weekly
-    <%= f.radio_button :cycle, 'monthly', :class => 'event_cycle',
+    <%= f.radio_button :periodical, 'monthly', :class => 'event_cycle',
                                           :disabled => '' %>Monthly
-    <%= f.radio_button :cycle, 'yearly', :class => 'event_cycle',
+    <%= f.radio_button :periodical, 'yearly', :class => 'event_cycle',
                                          :disabled => '' %>Yearly
   </div>
   <%= f.submit 'Save', :id => 'event_submit', :class => 'event_submit' %>
