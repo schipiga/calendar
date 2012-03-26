@@ -38,7 +38,7 @@ class RecoveriesController < ApplicationController
       if rec.save
         # FIXME tune heroku.com, because doesn't work currently
         UserMailer.recovery_pswd(user[:email],
-                                 root_url + 'recovery?key=' + key).deliver
+          'http://furious-fire-5881.heroku.com/recovery?key=' + key).deliver
         # render :text => root_url + 'recovery?key=' + key
         render :text => 'sended'
       else
