@@ -1,7 +1,5 @@
 class EventsController < ApplicationController
   
-  include EventsHelper
-
   before_filter :authenticate
   
   # GET new event (ajax)
@@ -30,7 +28,7 @@ class EventsController < ApplicationController
 
   # GET day events (ajax)
   def day_events
-    @events = events_in_day(params[:date])
+    @events = current_user.events.events_in_day(params[:date])
     respond_to do |format|
       format.js
     end
@@ -38,7 +36,7 @@ class EventsController < ApplicationController
 
   # GET events for days of current month (ajax)
   def month_events
-    @events = events_in_month(params[:month], params[:year])
+    @events = current_user.events.events_in_month(params[:month], params[:year])
     respond_to do |format|
       format.json { render json: @events }
     end

@@ -1,0 +1,7 @@
+# Logfile created on 2012-03-26 18:15:57 +0400 by logger.rb/31641
+REQUESTING PAGE: GET / with {} and HTTP headers {}
+REQUESTING PAGE: POST /sessions with {"utf8"=>"✓", "session"=>{"email"=>"sportsedrik@mail.ru", "password"=>"sedrik"}, "commit"=>"Sign in"} and HTTP headers {"HTTP_REFERER"=>"/"}
+REQUESTING PAGE: GET http://www.example.com/ with {} and HTTP headers {"HTTP_REFERER"=>"/sessions"}
+REQUESTING PAGE: GET / with {} and HTTP headers {}
+REQUESTING PAGE: POST /sessions with {"utf8"=>"✓", "session"=>{"email"=>"sportsedrik@mail.ru", "password"=>"sedrik"}, "commit"=>"Sign in"} and HTTP headers {"HTTP_REFERER"=>"/"}
+REQUESTING PAGE: GET http://www.example.com/ with {} and HTTP headers {"HTTP_REFERER"=>"/sessions"}
