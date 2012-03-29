@@ -1,7 +1,7 @@
-<%= form_for :session, :url => sessions_path do |f| %>
+<%= form_for :session, :url => sessions_path, :html => { :id => 's_form' } do |f| %>
   <div class='main_first_row'>
     <%= f.text_field :email, :placeholder => 'e-mail', :class => 'main_email' %>
-    <%= f.submit 'Sign in', :class => 'main_sign_in' %>
+    <%= f.submit 'Sign in', :id => 'sign_in', :class => 'main_sign_in' %>
   </div>
   <div class='main_second_row'>
     <%= f.password_field :password, :placeholder => 'password',

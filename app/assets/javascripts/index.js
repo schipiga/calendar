@@ -30,6 +30,20 @@ $(document).ready(function(){
     $('.recovery').css('display', 'block');
   });
 
+ /**
+  * send ajax for authorization
+  */
+  $('#s_form').ajaxForm(function(data){
+    // not nice, but effective. Right now don't have
+    // enough time and experience to do better
+    if (data != 'Invalid couple e-mail/password') {
+      window.location.href = data;
+    }else{
+      $('#message_text').html(data);
+      $('.message').css('display', 'block');
+    }
+  });
+
 //********* Registration **************
 
  /**
@@ -109,7 +123,8 @@ $(document).ready(function(){
   */
   $('#recovery_submit').live('click', function(){
     $('#r_form').ajaxForm(function(data){
-      alert(data);
+      $('#message_text').html(data);
+      $('.message').css('display', 'block');
     });
   });
 

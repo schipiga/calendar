@@ -18,11 +18,10 @@ class SessionsController < ApplicationController
                              params[:session][:password])
 
     if user.nil?
-      flash[:error] = 'No today, guy!'
-      redirect_to root_path
+      render :text => 'Invalid couple e-mail/password' 
     else
       sign_in user
-      redirect_to user
+      render :text => user_path(user)
     end
   end
 

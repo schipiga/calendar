@@ -27,9 +27,9 @@ class RecoveriesController < ApplicationController
   def create
     user = User.find_by_email(params[:recovery][:email])
     if user.nil?
-      render :text => 'User not found' 
+      render :text => "User isn't found"
     else
-      # HACK clear db from old records for current user
+      # clear db from old records for current user
       Recovery.delete_all(['user_id = ?', user[:id]])
 
       key = rec_key(user[:email])
@@ -40,9 +40,9 @@ class RecoveriesController < ApplicationController
         UserMailer.recovery_pswd(user[:email],
           'http://furious-fire-5881.heroku.com/recovery?key=' + key).deliver
         # render :text => root_url + 'recovery?key=' + key
-        render :text => 'sended'
+        render :text => 'E-mail is sent'
       else
-        render :text => "can't send"
+        render :text => "Cann't send message"
       end
     end
   end
