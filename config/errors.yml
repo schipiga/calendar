@@ -6,3 +6,8 @@ up01: Password is absent
 up02: Password isn't confirmed
 up03: Password must be more 6 symbols
 up04: Password must be less 50 symbols
+et01: Title is absent
+et02: Title must be less 50 symbols
+ed01: Description must be less 500 symbols
+ep01: Date is invalid 
+ep02: Date must be yyyy-mm-dd

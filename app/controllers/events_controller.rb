@@ -70,9 +70,10 @@ class EventsController < ApplicationController
   def create
     @event = current_user.events.new(params[:event])
     if @event.save
-      render :text => '' 
+       render :text => ''
     else
-      render :text => "Can't create!"
+      errors = json_errors(@event.errors.full_messages)
+      render :text => errors
     end
   end
 
@@ -82,7 +83,8 @@ class EventsController < ApplicationController
     if @event.update_attributes(params[:event])
       render :text => ''
     else
-      render :text => "Can't update!"
+      errors = json_errors(@event.errors.full_messages)
+      render :text => errors
     end
   end
 

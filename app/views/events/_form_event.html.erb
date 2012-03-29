@@ -1,12 +1,14 @@
 <%= form_for [current_user, @event], :html => { :id => 'e_form' } do |f| %>
   <div class='event_header'>
     <%= f.text_field :title, :placeholder => 'Title* (less 50 letters)',
+                             :id => 'event_title',
                              :class => 'event_title', :maxlength => 50 %>
     <div id='event_close' class='event_close btn_close'></div>
   </div>
   <%= f.text_area :description, 
                   :placeholder => 'Description (less 500 letters)',
-                  :class => 'event_description', :maxlength => 500 %>
+                  :id => 'event_description', :class => 'event_description',
+                  :maxlength => 500 %>
   <div class='event_div_point_date'>
     <%= f.text_field :point_date, :id => 'event_point_date',
                      :class => 'event_point_date', :placeholder => 'date*' %>

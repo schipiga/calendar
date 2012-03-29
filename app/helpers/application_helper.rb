@@ -2,6 +2,10 @@ require 'yaml'
 
 module ApplicationHelper
 
+  # I know, this code is unstable, because it doesn't check
+  # outside date, but it's just for scientific interest. Seems,
+  # in real apps errors notification is made another way.
+
   # convert error codes to error messages, using errors.yml,
   # delete duplicate errors for one field, if there are,
   # return error message and error codes for highlighting UI-fields
@@ -17,8 +21,8 @@ module ApplicationHelper
       if arr.scan(first_part)[0] == nil 
         parts = arr.split(' ')
         first_part = parts[0]
-        msg += '<br>' + msgs[parts[1]]
-        err_codes[i] = parts[1]
+        msg += '<br>' + msgs[parts[-1]]
+        err_codes[i] = parts[-1]
         i += 1
       end
     }

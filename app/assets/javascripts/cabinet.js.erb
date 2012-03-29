@@ -183,13 +183,50 @@ $(document).ready(function(){
   $('#event_submit').live('click', function(){
     $('#e_form').ajaxForm(function(data){
       if (data != '') {
-        alert(data);
+        var data = eval('(' + data + ')'); // covert json to hash
+        $('#message_text').html(data['msg']);
+        $.each(data['err_codes'], function(index, value){
+          // errors parsing: highlight fault fields
+          switch (value.charAt(1)){
+            case 't':
+              $('#event_title').css('background', '#fff88d');
+              break;
+            case 'd':
+              $('#event_description').css('background', '#fff88d');
+              break;
+            case 'p':
+              $('#event_point_date').css('background', '#fff88d');
+              break;
+          }
+        });
+        $('.message').css('display', 'block');
       }else{
         get_month_events();
         update_events_list();
+        $('.event').css('display', 'none');
       }
     });
-    $('.event').css('display', 'none');
+  });
+
+ /**
+  * remove highlighting event title, if there is
+  */
+  $('#event_title').live('focus', function(){
+    $(this).css('background', 'white');
+  });
+
+ /**
+  * remove highlighting event description, if there is
+  */
+  $('#event_description').live('focus', function(){
+    $(this).css('background', 'white');
+  });
+
+ /**
+  * remove highlighting event date, if there is
+  */
+  $('#event_point_date').live('focus', function(){
+    $(this).css('background', 'white');
   });
 
 //********* Show event form ***********

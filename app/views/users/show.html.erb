@@ -20,7 +20,7 @@
     <div id='calendar' class='calendar'></div>
   </div>
   <div class='right_column'>
-    <%= link_to 'Exit', session_path, :method => :delete %>
+    <a href='<%= session_path %>' data-method='delete'><div class='exit' title='Exit'></div></a>
   </div>
 </div>
 
@@ -73,6 +73,17 @@
   </div>
   <div class='show_event_container'>
     <div class='show_event_form'>
+    </div>
+  </div>
+</div>
+
+<!-- Message -->
+<div class='message'>
+  <div class='message_container'>
+    <div class='message_form'>
+      <div class='message_image'></div>
+      <div id='message_text' class='message_text'></div>
+      <div id='message_close' class='message_close'>x</div>
     </div>
   </div>
 </div>

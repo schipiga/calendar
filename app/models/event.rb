@@ -8,16 +8,17 @@ class Event < ActiveRecord::Base
 
   date_regex = /\A\d{4}-\d{1,2}-\d{1,2}/
 
-  validates :title, :presence => true,
-                    :length => { :maximum => 50 }
-  validates :description, :length => { :maximum => 500 }
-  validates :point_date, :presence => true,
-                         :format => { :with => date_regex }
+  validates :title, :presence => { :message => 'et01'},
+                    :length => { :maximum => 50, :message => 'et02' }
+  validates :description, :length => { :maximum => 500, :message => 'ed01' }
+  validates :point_date, :presence => { :message => 'ep01' },
+                         :format => { :with => date_regex, :message => 'ep02' }
   validates :is_share, :numericality => { :only_integer => true }
   validates :periodical, :inclusion => { :in => %w(none daily weekly monthly yearly) }
   validates :user_id, :presence => true, :format => { :with => /\A\d+/ }
   
-  before_save :set_periodical, :set_day_of_week
+  before_validation :set_periodical
+  before_save :set_day_of_week
 
   
   # return events list for current date
