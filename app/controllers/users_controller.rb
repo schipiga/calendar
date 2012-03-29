@@ -9,9 +9,10 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      render :text => 'Registration was successful'
+      render :text => '{"msg":"Registration was successfull"}'
     else
-      render :text => 'Sorry, something is wrong'
+      errors = json_errors(@user.errors.full_messages)
+      render :text => errors
     end
   end
 

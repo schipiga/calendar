@@ -44,8 +44,55 @@ $(document).ready(function(){
   */
   $('#user_submit').live('click', function(){
     $('#u_form').ajaxForm(function(data){
-      alert(data);
+      var data = eval('(' + data + ')'); // covert json to hash
+      $('#message_text').html(data['msg']);
+      if (data['err_codes']) {
+        $.each(data['err_codes'], function(index, value){
+          // errors parsing: highlight fault fields
+          switch (value.charAt(1)){
+            case 'f':
+              $('#fio').css('background', '#fff88d');
+              break;
+            case 'e':
+              $('#email').css('background', '#fff88d');
+              break;
+            case 'p':
+              $('#passwd').css('background', '#fff88d');
+              $('#confirm_passwd').css('background', '#fff88d');
+              break;
+          }
+        });
+      }
+      $('.message').css('display', 'block');
     });
+  });
+
+ /**
+  * remove highlighting from "fio" field, if there is
+  */
+  $('#fio').live('focus', function(){
+    $(this).css('background', 'white');
+  });
+
+ /**
+  * remove highlighting from "email" field, if there is
+  */
+  $('#email').live('focus', function(){
+    $(this).css('background', 'white');
+  });
+
+ /**
+  * remove highlighting from "password" field, if there is
+  */
+  $('#passwd').live('focus', function(){
+    $(this).css('background', 'white');
+  });
+  
+ /**
+  * remove highlighting from "password confirmation" field, if there is
+  */
+  $('#confirm_passwd').live('focus', function(){
+    $(this).css('background', 'white');
   });
 
 //********* Recovery ******************
@@ -66,5 +113,10 @@ $(document).ready(function(){
     });
   });
 
-});
+//********* Message *******************
 
+  $('#message_close').click(function(){
+    $('.message').css('display', 'none');
+  });
+
+});

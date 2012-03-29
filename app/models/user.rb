@@ -9,14 +9,19 @@ class User < ActiveRecord::Base
    
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
-  validates :fio, :length => { :maximum => 50 }
-  validates :email, :presence => true,
-                    :format => { :with => email_regex },
-                    :uniqueness => { :case_sensitive => false }
-  validates :password, :presence => true,
-                       :confirmation => true,
-                       :length => { :within => 6..40 }
-
+  validates :fio, :length => { :maximum => 50,
+                               :message => 'uf01' }
+  validates :email, :presence => { :message => 'ue01' },
+                    :format => { :with => email_regex,
+                                 :message => 'ue02' },
+                    :uniqueness => { :case_sensitive => false,
+                                     :message => 'ue03' }
+  validates :password, :presence => { :message => 'up01' },
+                       :confirmation => { :message => "up02" },
+                       :length => { :within => 6..40,
+                                    :too_short => 'up03',
+                                    :too_long => 'up04' }
+    
   before_save :encrypt_password
 
   def has_password? (submitted_password)

@@ -1,11 +1,16 @@
 <%= form_for @user, :html => { :id => 'u_form' } do |f| %>
   <%= f.text_field :fio, :placeholder => 'Name Surname',
+                         :id => 'fio',
                          :class => 'user_field' %>
-  <%= f.text_field :email, :placeholder => 'e-mail*', :class => 'user_field' %>
+  <%= f.text_field :email, :placeholder => 'e-mail*',
+                           :id => 'email',
+                           :class => 'user_field' %>
   <%= f.password_field :password, :placeholder => 'password* (6 - 50 letters)',
+                                  :id => 'passwd',
                                   :class => 'user_field' %>
   <%= f.password_field :password_confirmation,
                        :placeholder => 'confirm password*',
+                       :id => 'confirm_passwd',
                        :class => 'user_field' %>
   <%= f.submit 'Save', :class => 'user_submit', :id => 'user_submit' %>
 <% end %>

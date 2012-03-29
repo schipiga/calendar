@@ -1,0 +1,8 @@
+uf01: Name must be less 50 symbols
+ue01: E-mail is absent
+ue02: E-mail is invalid format
+ue03: E-mail already in use
+up01: Password is absent
+up02: Password isn't confirmed
+up03: Password must be more 6 symbols
+up04: Password must be less 50 symbols
