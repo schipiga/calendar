@@ -13,9 +13,11 @@ class Event < ActiveRecord::Base
   validates :description, :length => { :maximum => 500, :message => 'ed01' }
   validates :point_date, :presence => { :message => 'ep01' },
                          :format => { :with => date_regex, :message => 'ep02' }
-  validates :is_share, :numericality => { :only_integer => true }
+  validates :is_share, :numericality => { :only_integer => true,
+                                          :greater_than => -1,
+                                          :less_than => 2 }
   validates :periodical, :inclusion => { :in => %w(none daily weekly monthly yearly) }
-  validates :user_id, :presence => true, :format => { :with => /\A\d+/ }
+  validates :user_id, :presence => true, :numericality => { :only_integer => true }
   
   before_validation :set_periodical
   before_save :set_day_of_week
@@ -34,12 +36,13 @@ class Event < ActiveRecord::Base
     month = month.to_i
     year = year.to_i
 
-    return link_arrays(request_once_events(month, year),
+    return merge_events(request_once_events(month, year),
                        request_periodical_events(month, year))
   end
 
   private
-
+    
+    # force set periodical, if it wasn't sent
     def set_periodical
       if is_periodical == '0' 
         self.periodical = 'none'
@@ -70,6 +73,7 @@ class Event < ActiveRecord::Base
                                           '-' + date.day.to_s)
     end
 
+    # get and sort onetime events
     def self.request_once_events(month, year)
       request = 'point_date <= ? AND point_date >= ? AND periodical = "none"'
       events = select('point_date').where(request,
@@ -87,6 +91,7 @@ class Event < ActiveRecord::Base
       return result 
     end
 
+    # get and sort periodical events
     def self.request_periodical_events(month, year)
       request = 'point_date <= ? AND periodical <> "none"' 
       events = select('point_date, periodical, day_of_week').where(request, Date.civil(year, month, -1))
@@ -129,7 +134,8 @@ class Event < ActiveRecord::Base
       return result
     end
 
-    def self.link_arrays(once, period)
+    # merge onetime and periodal events
+    def self.merge_events(once, period)
       result = []
       
       i = 0
