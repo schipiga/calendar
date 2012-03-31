@@ -6,7 +6,7 @@ class Event < ActiveRecord::Base
   attr_accessible :title, :description, :point_date, :is_share, :is_periodical,
                   :periodical, :user_id, :day_of_week
 
-  date_regex = /\A\d{4}-\d{1,2}-\d{1,2}/
+  date_regex = /\A\d+-\d{1,2}-\d{1,2}/
 
   validates :title, :presence => { :message => 'et01'},
                     :length => { :maximum => 50, :message => 'et02' }
@@ -25,16 +25,28 @@ class Event < ActiveRecord::Base
   
   # return events list for current date
   def self.events_in_day(date)
-    date = Date.parse(date)
-
-    request_events_in_day(date)
+    begin
+      date = Date.parse(date)
+      request_events_in_day(date)
+    rescue
+      return 'Invalid data format'
+    end
   end
   
   # return events count for days of month, real magic :)
   def self.events_in_month(month, year)
-    
+
     month = month.to_i
+
+    if month < 1 or month > 12 
+      return 'Invalid month format'
+    end
+
     year = year.to_i
+
+    if year < 1 
+      return 'Invalid year format'
+    end
 
     return merge_events(request_once_events(month, year),
                        request_periodical_events(month, year))
@@ -53,7 +65,8 @@ class Event < ActiveRecord::Base
     def set_day_of_week
       self.day_of_week = Date.parse(point_date.to_s).wday
     end
-
+    
+    # get events for day
     def self.request_events_in_day(date)
       events = select('id, title').where('point_date = ?', date)
 
@@ -64,13 +77,13 @@ class Event < ActiveRecord::Base
       events += select('id, title').where(request, date, date.wday)
     
       request = 'point_date < ? AND periodical = "monthly" AND point_date LIKE ?'
-      events += select('id, title').where(request, date, '%-%-' + date.day.to_s)
+      events += select('id, title').where(request, date, '%-%-' + ('%02d' % date.day))
 
       request = 'point_date < ? AND periodical = "yearly" AND point_date LIKE ?'
       events += select('id, title').where(request,
                                           date,
-                                          '%-' + date.month.to_s +
-                                          '-' + date.day.to_s)
+                                          '%-' + ('%02d' % date.month) +
+                                          '-' + ('%02d' % date.day.to_s))
     end
 
     # get and sort onetime events
@@ -94,7 +107,8 @@ class Event < ActiveRecord::Base
     # get and sort periodical events
     def self.request_periodical_events(month, year)
       request = 'point_date <= ? AND periodical <> "none"' 
-      events = select('point_date, periodical, day_of_week').where(request, Date.civil(year, month, -1))
+      events = select('point_date, periodical, day_of_week').
+                  where(request, Date.civil(year, month, -1))
       
       # later, select period events
       result = {}
@@ -120,7 +134,7 @@ class Event < ActiveRecord::Base
           }
 
         when 'monthly'
-          if Date.civil(year, month, -1) > e['point_date']
+          if Date.civil(year, month, -1) >= e['point_date']
             result[e['point_date'].day] += 1
           end
          
