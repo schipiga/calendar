@@ -27,7 +27,7 @@ class Event < ActiveRecord::Base
   def self.events_in_day(date)
     begin
       date = Date.parse(date)
-      request_events_in_day(date)
+      return request_events_in_day(date)
     rescue
       return 'Invalid data format'
     end
@@ -84,6 +84,7 @@ class Event < ActiveRecord::Base
                                           date,
                                           '%-' + ('%02d' % date.month) +
                                           '-' + ('%02d' % date.day.to_s))
+      return events
     end
 
     # get and sort onetime events
