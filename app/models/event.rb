@@ -88,7 +88,7 @@ class Event < ActiveRecord::Base
 
     # get and sort onetime events
     def self.request_once_events(month, year)
-      request = 'point_date <= ? AND point_date >= ? AND periodical = "none"'
+      request = "point_date <= ? AND point_date >= ? AND periodical = 'none'"
       events = select('point_date').where(request,
                                         Date.civil(year, month, -1),
                                         Date.civil(year, month, 1))
@@ -106,7 +106,7 @@ class Event < ActiveRecord::Base
 
     # get and sort periodical events
     def self.request_periodical_events(month, year)
-      request = 'point_date <= ? AND periodical <> "none"' 
+      request = "point_date <= ? AND periodical <> 'none'" 
       events = select('point_date, periodical, day_of_week').
                   where(request, Date.civil(year, month, -1))
       
