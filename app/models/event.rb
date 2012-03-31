@@ -68,18 +68,18 @@ class Event < ActiveRecord::Base
     
     # get events for day
     def self.request_events_in_day(date)
-      events = select('id, title').where('point_date = ?', date)
+      events = select('id, title').where("point_date = ?", date)
 
-      request = 'point_date < ? AND periodical = "daily"'
+      request = "point_date < ? AND periodical = 'daily'"
       events += select('id, title').where(request, date)
 
-      request = 'point_date < ? AND periodical = "weekly" AND day_of_week = ?'
+      request = "point_date < ? AND periodical = 'weekly' AND day_of_week = ?"
       events += select('id, title').where(request, date, date.wday)
     
-      request = 'point_date < ? AND periodical = "monthly" AND point_date LIKE ?'
+      request = "point_date < ? AND periodical = 'monthly' AND point_date LIKE ?"
       events += select('id, title').where(request, date, '%-%-' + ('%02d' % date.day))
 
-      request = 'point_date < ? AND periodical = "yearly" AND point_date LIKE ?'
+      request = "point_date < ? AND periodical = 'yearly' AND point_date LIKE ?"
       events += select('id, title').where(request,
                                           date,
                                           '%-' + ('%02d' % date.month) +
