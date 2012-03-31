@@ -10,7 +10,7 @@
 <div class='show_event_point_date'>
   date: <%= @event.point_date %>
 </div>
-<% if !@event.periodical.blank? %>
+<% if @event.periodical != 'none' %>
   <div class='show_event_cycle'>
     period: <%= @event.periodical %>
   </div>
