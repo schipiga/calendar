@@ -135,7 +135,7 @@ class Event < ActiveRecord::Base
           }
 
         when 'monthly'
-          if Date.civil(year, month, -1) >= e['point_date']
+          if Date.civil(year,month,-1).day >= e['point_date'].day
             result[e['point_date'].day] += 1
           end
          
