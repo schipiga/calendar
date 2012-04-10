@@ -17,7 +17,7 @@ Calendar::Application.routes.draw do
     end
   end
 
-  root :to => 'sessions#new'
+  # root :to => 'sessions#new'
   match '/day_events' => 'events#day_events'
   match '/month_events' => 'events#month_events'
   match '/my_events' => 'events#user_events'
